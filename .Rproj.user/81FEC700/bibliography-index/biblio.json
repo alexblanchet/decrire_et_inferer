@@ -1,31 +1,837 @@
 {
     "sources": [
         {
-            "URL": "http://yihui.org/knitr/",
             "author": [
                 {
-                    "family": "Xie",
-                    "given": "Yihui"
+                    "family": "Tobias",
+                    "given": "Sheila"
                 }
             ],
-            "edition": "2nd",
-            "id": "xie2015",
+            "id": "tobias1993",
             "issued": {
                 "date-parts": [
                     [
-                        2015
+                        1993
                     ]
                 ]
             },
-            "note": "ISBN 978-1498716963",
-            "publisher": "Chapman; Hall/CRC",
-            "publisher-place": "Boca Raton, Florida",
-            "title": "Dynamic documents with R and knitr",
+            "publisher": "WW Norton",
+            "title": "Overcoming math anxiety",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Favre",
+                    "given": "Pierre"
+                }
+            ],
+            "id": "favre2005",
+            "issued": {
+                "date-parts": [
+                    [
+                        2005
+                    ]
+                ]
+            },
+            "publisher": "Presses de Sciences Po",
+            "publisher-place": "Paris",
+            "title": "Comprendre le monde pour le changer",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Fox",
+                    "given": "William"
+                }
+            ],
+            "id": "fox1999",
+            "issued": {
+                "date-parts": [
+                    [
+                        1999
+                    ]
+                ]
+            },
+            "publisher": "Presses Université Laval",
+            "title": "Statistiques sociales",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Pétry",
+                    "given": "François"
+                },
+                {
+                    "family": "Gélineau",
+                    "given": "François"
+                }
+            ],
+            "id": "petry2003",
+            "issued": {
+                "date-parts": [
+                    [
+                        2003
+                    ]
+                ]
+            },
+            "publisher": "Presses Université Laval",
+            "title": "Guide pratique d’introduction à la régression en sciences sociales",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Kachigan",
+                    "given": "Sam Kash"
+                }
+            ],
+            "id": "kachigan1986statistical",
+            "issued": {
+                "date-parts": [
+                    [
+                        1986
+                    ]
+                ]
+            },
+            "publisher": "Radius Press",
+            "title": "Statistical analysis: An interdisciplinary introduction to univariate & multivariate methods",
+            "title-short": "Statistical analysis",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Tabachnick",
+                    "given": "Barbara G"
+                },
+                {
+                    "family": "Fidell",
+                    "given": "Linda S"
+                },
+                {
+                    "family": "Osterlind",
+                    "given": "Steven J"
+                }
+            ],
+            "id": "tabachnick2001",
+            "issued": {
+                "date-parts": [
+                    [
+                        2001
+                    ]
+                ]
+            },
+            "publisher": "Allyn; Bacon Boston",
+            "title": "Using multivariate statistics",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Gelman",
+                    "given": "Andrew"
+                },
+                {
+                    "family": "Hill",
+                    "given": "Jennifer"
+                }
+            ],
+            "id": "gelman2006",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006
+                    ]
+                ]
+            },
+            "publisher": "Cambridge university press",
+            "title": "Data analysis using regression and multilevel/hierarchical models",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1038/s41562-017-0189-z",
+            "URL": "https://doi.org/10.1038/s41562-017-0189-z",
+            "author": [
+                {
+                    "family": "Benjamin",
+                    "given": "Daniel J."
+                },
+                {
+                    "family": "Berger",
+                    "given": "James O."
+                },
+                {
+                    "family": "Johannesson",
+                    "given": "Magnus"
+                },
+                {
+                    "family": "Nosek",
+                    "given": "Brian A."
+                },
+                {
+                    "family": "Wagenmakers",
+                    "given": "E.-J."
+                },
+                {
+                    "family": "Berk",
+                    "given": "Richard"
+                },
+                {
+                    "family": "Bollen",
+                    "given": "Kenneth A."
+                },
+                {
+                    "family": "Brembs",
+                    "given": "Björn"
+                },
+                {
+                    "family": "Brown",
+                    "given": "Lawrence"
+                },
+                {
+                    "family": "Camerer",
+                    "given": "Colin"
+                },
+                {
+                    "family": "Cesarini",
+                    "given": "David"
+                },
+                {
+                    "family": "Chambers",
+                    "given": "Christopher D."
+                },
+                {
+                    "family": "Clyde",
+                    "given": "Merlise"
+                },
+                {
+                    "family": "Cook",
+                    "given": "Thomas D."
+                },
+                {
+                    "family": "Boeck",
+                    "given": "Paul De"
+                },
+                {
+                    "family": "Dienes",
+                    "given": "Zoltan"
+                },
+                {
+                    "family": "Dreber",
+                    "given": "Anna"
+                },
+                {
+                    "family": "Easwaran",
+                    "given": "Kenny"
+                },
+                {
+                    "family": "Efferson",
+                    "given": "Charles"
+                },
+                {
+                    "family": "Fehr",
+                    "given": "Ernst"
+                },
+                {
+                    "family": "Fidler",
+                    "given": "Fiona"
+                },
+                {
+                    "family": "Field",
+                    "given": "Andy P."
+                },
+                {
+                    "family": "Forster",
+                    "given": "Malcolm"
+                },
+                {
+                    "family": "George",
+                    "given": "Edward I."
+                },
+                {
+                    "family": "Gonzalez",
+                    "given": "Richard"
+                },
+                {
+                    "family": "Goodman",
+                    "given": "Steven"
+                },
+                {
+                    "family": "Green",
+                    "given": "Edwin"
+                },
+                {
+                    "family": "Green",
+                    "given": "Donald P."
+                },
+                {
+                    "family": "Greenwald",
+                    "given": "Anthony G."
+                },
+                {
+                    "family": "Hadfield",
+                    "given": "Jarrod D."
+                },
+                {
+                    "family": "Hedges",
+                    "given": "Larry V."
+                },
+                {
+                    "family": "Held",
+                    "given": "Leonhard"
+                },
+                {
+                    "family": "Ho",
+                    "given": "Teck Hua"
+                },
+                {
+                    "family": "Hoijtink",
+                    "given": "Herbert"
+                },
+                {
+                    "family": "Hruschka",
+                    "given": "Daniel J."
+                },
+                {
+                    "family": "Imai",
+                    "given": "Kosuke"
+                },
+                {
+                    "family": "Imbens",
+                    "given": "Guido"
+                },
+                {
+                    "family": "Ioannidis",
+                    "given": "John P. A."
+                },
+                {
+                    "family": "Jeon",
+                    "given": "Minjeong"
+                },
+                {
+                    "family": "Jones",
+                    "given": "James Holland"
+                },
+                {
+                    "family": "Kirchler",
+                    "given": "Michael"
+                },
+                {
+                    "family": "Laibson",
+                    "given": "David"
+                },
+                {
+                    "family": "List",
+                    "given": "John"
+                },
+                {
+                    "family": "Little",
+                    "given": "Roderick"
+                },
+                {
+                    "family": "Lupia",
+                    "given": "Arthur"
+                },
+                {
+                    "family": "Machery",
+                    "given": "Edouard"
+                },
+                {
+                    "family": "Maxwell",
+                    "given": "Scott E."
+                },
+                {
+                    "family": "McCarthy",
+                    "given": "Michael"
+                },
+                {
+                    "family": "Moore",
+                    "given": "Don A."
+                },
+                {
+                    "family": "Morgan",
+                    "given": "Stephen L."
+                },
+                {
+                    "family": "Munafó",
+                    "given": "Marcus"
+                },
+                {
+                    "family": "Nakagawa",
+                    "given": "Shinichi"
+                },
+                {
+                    "family": "Nyhan",
+                    "given": "Brendan"
+                },
+                {
+                    "family": "Parker",
+                    "given": "Timothy H."
+                },
+                {
+                    "family": "Pericchi",
+                    "given": "Luis"
+                },
+                {
+                    "family": "Perugini",
+                    "given": "Marco"
+                },
+                {
+                    "family": "Rouder",
+                    "given": "Jeff"
+                },
+                {
+                    "family": "Rousseau",
+                    "given": "Judith"
+                },
+                {
+                    "family": "Savalei",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Schönbrodt",
+                    "given": "Felix D."
+                },
+                {
+                    "family": "Sellke",
+                    "given": "Thomas"
+                },
+                {
+                    "family": "Sinclair",
+                    "given": "Betsy"
+                },
+                {
+                    "family": "Tingley",
+                    "given": "Dustin"
+                },
+                {
+                    "family": "Zandt",
+                    "given": "Trisha Van"
+                },
+                {
+                    "family": "Vazire",
+                    "given": "Simine"
+                },
+                {
+                    "family": "Watts",
+                    "given": "Duncan J."
+                },
+                {
+                    "family": "Winship",
+                    "given": "Christopher"
+                },
+                {
+                    "family": "Wolpert",
+                    "given": "Robert L."
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yu"
+                },
+                {
+                    "family": "Young",
+                    "given": "Cristobal"
+                },
+                {
+                    "family": "Zinman",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Johnson",
+                    "given": "Valen E."
+                }
+            ],
+            "container-title": "Nature Human Behaviour",
+            "id": "Benjamin2017",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017,
+                        9
+                    ]
+                ]
+            },
+            "page": "6-10",
+            "publisher": "Springer Nature",
+            "title": "Redefine statistical significance",
+            "type": "article-journal",
+            "volume": "2"
+        },
+        {
+            "DOI": "10.17605/osf.io/9s3y6",
+            "URL": "https://psyarxiv.com/9s3y6/",
+            "author": [
+                {
+                    "family": "Lakens",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Adolfi",
+                    "given": "Federico"
+                },
+                {
+                    "family": "Albers",
+                    "given": "Casper"
+                },
+                {
+                    "family": "Anvari",
+                    "given": "Farid"
+                },
+                {
+                    "family": "Apps",
+                    "given": "Matthew"
+                },
+                {
+                    "family": "Argamon",
+                    "given": "Shlomo"
+                },
+                {
+                    "dropping-particle": "van",
+                    "family": "Assen",
+                    "given": "Marcel"
+                },
+                {
+                    "family": "Baguley",
+                    "given": "Thom"
+                },
+                {
+                    "family": "Becker",
+                    "given": "Raymond"
+                },
+                {
+                    "family": "Benning",
+                    "given": "Stephen"
+                },
+                {
+                    "family": "Bradford",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Buchanan",
+                    "given": "Erin"
+                },
+                {
+                    "family": "Caldwell",
+                    "given": "Aaron"
+                },
+                {
+                    "dropping-particle": "van",
+                    "family": "Calster",
+                    "given": "Ben"
+                },
+                {
+                    "family": "Carlsson",
+                    "given": "Rickard"
+                },
+                {
+                    "family": "Chen",
+                    "given": "Sau-Chin"
+                },
+                {
+                    "family": "Chung",
+                    "given": "Bryan"
+                },
+                {
+                    "family": "Colling",
+                    "given": "Lincoln"
+                },
+                {
+                    "family": "Collins",
+                    "given": "Gary"
+                },
+                {
+                    "family": "Crook",
+                    "given": "Zander"
+                },
+                {
+                    "family": "Cross",
+                    "given": "Emily"
+                },
+                {
+                    "family": "Daniels",
+                    "given": "Sameera"
+                },
+                {
+                    "family": "Danielsson",
+                    "given": "Henrik"
+                },
+                {
+                    "family": "DeBruine",
+                    "given": "Lisa"
+                },
+                {
+                    "family": "Dunleavy",
+                    "given": "Daniel"
+                },
+                {
+                    "family": "Earp",
+                    "given": "Brian"
+                },
+                {
+                    "family": "feist",
+                    "given": "michele"
+                },
+                {
+                    "family": "Ferrell",
+                    "given": "Jason"
+                },
+                {
+                    "family": "Field",
+                    "given": "James"
+                },
+                {
+                    "family": "Fox",
+                    "given": "Nick"
+                },
+                {
+                    "family": "Friesen",
+                    "given": "Amanda"
+                },
+                {
+                    "family": "Gomes",
+                    "given": "Caio"
+                },
+                {
+                    "family": "Grange",
+                    "given": "Jim"
+                },
+                {
+                    "family": "Grieve",
+                    "given": "Andrew"
+                },
+                {
+                    "family": "Guggenberger",
+                    "given": "Robert"
+                },
+                {
+                    "family": "Van Harmelen",
+                    "given": "Anne-Laura"
+                },
+                {
+                    "family": "Hasselman",
+                    "given": "Fred"
+                },
+                {
+                    "family": "Hochard",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Hoffarth",
+                    "given": "Mark"
+                },
+                {
+                    "family": "Holmes",
+                    "given": "Nicholas"
+                },
+                {
+                    "family": "Ingre",
+                    "given": "Michael"
+                },
+                {
+                    "family": "Isager",
+                    "given": "Peder"
+                },
+                {
+                    "family": "Isotalus",
+                    "given": "Hanna"
+                },
+                {
+                    "family": "Johansson",
+                    "given": "Christer"
+                },
+                {
+                    "family": "Juszczyk",
+                    "given": "Konrad"
+                },
+                {
+                    "family": "Kenny",
+                    "given": "David"
+                },
+                {
+                    "family": "Khalil",
+                    "given": "Ahmed"
+                },
+                {
+                    "family": "Konat",
+                    "given": "Barbara"
+                },
+                {
+                    "family": "Lao",
+                    "given": "Junpeng"
+                },
+                {
+                    "family": "Larsen",
+                    "given": "Erik"
+                },
+                {
+                    "family": "Lodder",
+                    "given": "Gerine"
+                },
+                {
+                    "family": "Lukavsky",
+                    "given": "Jiri"
+                },
+                {
+                    "family": "Madan",
+                    "given": "Christopher"
+                },
+                {
+                    "family": "Manheim",
+                    "given": "David"
+                },
+                {
+                    "family": "Gonzalez-Marquez",
+                    "given": "Monica"
+                },
+                {
+                    "family": "Martin",
+                    "given": "Stephen"
+                },
+                {
+                    "family": "Martin",
+                    "given": "Andrea"
+                },
+                {
+                    "family": "Mayo",
+                    "given": "Deborah"
+                },
+                {
+                    "family": "McCarthy",
+                    "given": "Randy"
+                },
+                {
+                    "family": "McConway",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "McFarland",
+                    "given": "Colin"
+                },
+                {
+                    "family": "Nilsonne",
+                    "given": "Gustav"
+                },
+                {
+                    "family": "Nio",
+                    "given": "Amanda"
+                },
+                {
+                    "family": "Lino de Oliveira",
+                    "given": "Cilene"
+                },
+                {
+                    "family": "Parsons",
+                    "given": "Sam"
+                },
+                {
+                    "family": "Pfuhl",
+                    "given": "Gerit"
+                },
+                {
+                    "family": "Quinn",
+                    "given": "Kimberly"
+                },
+                {
+                    "family": "Sakon",
+                    "given": "John"
+                },
+                {
+                    "family": "Saribay",
+                    "given": "Selahattin"
+                },
+                {
+                    "family": "Schneider",
+                    "given": "Iris"
+                },
+                {
+                    "family": "Selvaraju",
+                    "given": "Manojkumar"
+                },
+                {
+                    "family": "Sjoerds",
+                    "given": "Zsuzsika"
+                },
+                {
+                    "family": "Smith",
+                    "given": "Samuel"
+                },
+                {
+                    "family": "Smits",
+                    "given": "Tim"
+                },
+                {
+                    "family": "Spies",
+                    "given": "Jeffrey"
+                },
+                {
+                    "family": "Sreekumar",
+                    "given": "Vishnu"
+                },
+                {
+                    "family": "Steltenpohl",
+                    "given": "Crystal"
+                },
+                {
+                    "family": "Stenhouse",
+                    "given": "Neil"
+                },
+                {
+                    "family": "Świątkowski",
+                    "given": "Wojciech"
+                },
+                {
+                    "family": "Vadillo",
+                    "given": "Miguel"
+                },
+                {
+                    "family": "Williams",
+                    "given": "Matt"
+                },
+                {
+                    "family": "williams",
+                    "given": "samantha"
+                },
+                {
+                    "family": "Williams",
+                    "given": "Donald"
+                },
+                {
+                    "family": "Orban de Xivry",
+                    "given": "Jean-Jacques"
+                },
+                {
+                    "family": "Yarkoni",
+                    "given": "Tal"
+                },
+                {
+                    "family": "Ziano",
+                    "given": "Ignazio"
+                },
+                {
+                    "family": "Zwaan",
+                    "given": "Rolf"
+                }
+            ],
+            "id": "Lakens2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "keyword": "Social and Behavioral Sciences",
+            "page": "-",
+            "publisher": "PsyArXiv",
+            "title": "Justify your alpha",
+            "type": "article-journal"
         }
     ],
     "project_biblios": [
-        "book.bib",
-        "packages.bib"
+        "bibliography.bib"
     ]
 }
