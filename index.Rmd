@@ -1,60 +1,54 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
-date: "`r Sys.Date()`"
+title: "Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R"
+author: |
+  | Alexandre Blanchet
+  | McGill University
+date: "mars 2018"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+bibliography: [bibliography.bib]
+subtitle: Notes de cours
+abstract: Ce document contient les notes de cours de mon enseignement de l'introduction aux statistiques. Il vise principalement les étudiants en science politique, mais pourrait aussi servir aux étudiants de tous les domaines qui utilisent les méthodes quantitatives. Les exemples utilisés sont cependant tirés de la vie politique. Le document couvre d'abord l'introduction à R et les manipulations de bases avec le logiciel. Une emphase particulière est ensuite portée sur la régression linéaire. Les autres types de régression, notamment les régressions logistiques et multinomiales, seront ajoutées éventuellement. Finalement, le document aborde les questions liées à l'inférence statistique. Tout le code R utilisé est reproduit dans ce document et est facilement reproductible. L'accent est mis sur la compréhension intuitive des méthodes statistiques elles-mêmes plutôt que sur l'aspect «computationnel» de leur mise en application. Cependant, cet aspect est vu en parallèle afin d'aider les lecteurs à saisir progressivement comment sont mises en application les méthodes statistiques abordées. Ce document est une version préliminaire et les commentaires et suggestions sont bienvenus! Je n'ai aucun problème à ce que ce matériel soit utilisé pour votre propre enseignement, en autant que les crédits me soient adéquatement attribués. Cette version est en date de mars 2018. Ces notes s'accompagnaient d'un enseignement en classe et des explications additionnelles sur le code R étaient souvent fournies. Ce document n'était pas initialement prévu pour être utilsé comme une source unique et l'approche de programmation ne suit donc pas toujours un paradigme cohérent. L'idée initiale était d'illustrer plusieurs manières de faire en fournissant les détails lors des séances en classe. Sachant que plusieurs enseignants utlisent ce document pour l'enseignement, j'entends progressivement améliorer cet aspect dans les prochains mois. J'en profiterai pour actualiser certaines techniques de programmation.
+
+urlcolor: blue
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
-# About
-
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
-
-## Usage 
-
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
-
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
-
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
-
-## Render book
-
-You can render the HTML version of this example book without changing anything:
-
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
-```
-
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-```{r eval=FALSE}
-bookdown::serve_book()
-```
 
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+# Objectifs
+
+L'objectif de ce document est d'abord de démystifier les approches statistiques. La plupart d'entre vous commencez votre maîtrise ou votre doctorat et aurez peut-être à apprendre une variété de méthodes statistiques pour mener à bien vos projets de recherche. Lorsque l'on commence à apprendre ces méthodes, il est facile d'être intimidé par des équations qui semblent bien complexes, ou par des logiciels qui peuvent de prime abord être difficiles à comprendre. Peut-être êtes-vous un peu plus avancé et avez déjà commencé à apprendre des méthodes plus complexes. Si c'est votre cas, cette séance vous sera utile aussi. Quand on commence à tenter de faire des choses plus complexes, il n'est pas rare que l'on se sente arriver en territoire inconnu et qu'on perde de vue l'objectif de base qui demeure pourtant simple. 
+
+Les statistiques ne sont pas de la magie et elles ne doivent jamais se substituer à votre jugement, étant entendu que celui-ci soit fondé sur une bonne compréhension de ce que les chiffres vous disent. Le fait que quelque chose soit «statistiquement significatif» ne constitue en aucun cas une sorte de sceau certifiant la véracité de ce que vous proposez. Quand on commence à faire des analyses statistiques, on est souvent obnubilé par les étoiles (ces fameuses étoiles, qui sont généralement le symbole associé à la significativité statistique). Il est excitant d'appuyer sur un bouton et de voir des étoiles apparaître à côté des chiffres. La chose entraîne une sorte de «boucle béhaviorale» : on appuie sur un bouton et on obtient une récompense. La plupart d'entre-nous y succombons. Je l'ai fait au début et je le vois très souvent chez mes collègues plus jeunes qui commencent. 
+
+La réalité est que tous les modèles statistiques, les simples comme les plus complexes, ont deux objectifs généraux : décrire et inférer. Nous voulons _décrire_ des données quelconques et, si nécessaire (ce qui est le cas la plupart du temps puisque nous utilisons souvent des échantillons) en _inférer_ quelque chose à une population plus large. En tout temps donc, gardez à l'esprit ces deux notions, parce que c'est systématiquement ce que toute forme de d'analyse statistique cherche à faire. 
+
+Nous utiliserons ici le [logiciel R](https://www.r-project.org) qui est gratuit et de plus en plus utilisé en science politique. Je vous suggère aussi de télécharger [R Studio](https://www.rstudio.com) qui est une interface très utile facilitant l'utilisation de R. Ceci étant, ce cours ne porte pas spécifiquement sur R. Je vais d'abord vous donner quelques notions de bases et expliquer la syntaxe au fur et à mesure pour que vous puissiez la comprendre, mais je ne me lancerai pas dans de grandes explications concernant le logiciel lui-même. La raison est tout simplement que nous n'apprenons rien sans avoir la _motivation_ de le faire. Dans le cas de R (et de tous les logiciels statistiques), il est donc tout à fait inutile de se concentrer sur son utilisation sans en même temps vous donner des idées sur ce que vous pourriez faire avec le logiciel. 
+
+L'apprentissage de la syntaxe (l'aspect «computationnel» des méthodes quantitatives), se fait forcément par la pratique et celle-ci vient de la nécessité. Nous apprenons à faire quelque chose parce que nous avons un objectif en tête. Je vous donnerai ici les bases pour vous aider à vous repérer au travers de l'aspect computationnel des méthodes statistiques, mais lorsque vous serez seul dans votre bureau, prêt à faire une certaine analyse, vous aurez forcément à chercher sur internet. C'est tout à fait normal. 
+
+Je me concentrerai donc à vous donner des éléments de bases de l'analyse statistique et, au passage, nous verrons comment les faire avec R. Vous verrez alors les deux éléments conjointement et, lentement mais sûrement, la logique derrière la syntaxe de R vous apparaîtra de plus en plus claire. L'objectif central demeure cependant que vous développiez une compréhension plus intuitive des méthodes statistiques que je vais vous présenter. L'apprentissage de la syntaxe est donc un objectif secondaire, mais parallèle. Il ne fait pas de sens d'apprendre à utilisr une syntaxe sans comprendre ce qu'elle fait, et il fait de moins en moins de sens d'apprendre des méthodes statistiques sans savoir comment les appliquer dans la pratique. Il reste que la compréhension des méthodes demeure la priorité, parce que c'est cette compréhension qui vous motivera à les appliquer dans vos recherches et surtout, c'est cette compréhension qui vous permettra de bien le faire. 
+
+Si R vous intéresse, vous pouvez consulter le site web de [Quick-R](http://www.statmethods.net/index.html) qui contient toutes les informations nécessaires pour vous aider à démarrer et aller plus loin avec le logiciel. Ceci étant, toute la syntaxe nécessaire pour reproduire les analyses présentées ici est inclue dans le document dans des blocs ombragé et le résultat produit par R sera précédé de ## pour chaque ligne. Vous pourrez donc vous y référer au besoin et adapter la syntaxe pour mener vos propres analyses.
+
+## Les logiciels
+
+Une syntaxe est une série de commandes que l'on demande à un logiciel d'effectuer. Certains logiciels mettent un accent particulier sur les menus déroulants (notamment SPSS), alors que d'autres offrent un bel équilibre en la possibilité d'utiliser une syntaxe complète et intuitive, tout en ayant accès à des menus déroulant pour les tâches les plus communes (Stata). Tous les logiciels ont besoin d'une forme ou d'une autre de syntaxe parce qu'il serait tout simplement impossible d'avoir des menus déroulants pour toutes les analyses statistiques existantes. À l'inverse, la syntaxe offre des possibilités infinies. R n'offre pas de menus déroulant, mais il a l'avantage d'être gratuit et aussi complet (et même plus complet) que les logiciels payants.  
+
+Le premier avantage de la syntaxe est qu'elle est reproductible. On peut donc «rouler» une syntaxe sur des données et répéter nos analyses antérieures sans altérer les données initiales. Dans un univers où la reproductibilité de la recherche est de plus en plus important, l'utilisation de la syntaxe deviendra rapidement impératif. Par ailleurs, même les logiciels qui offrent des menus déroulant fonctionnent aussi à base de syntaxe afin que l'utilisateur puisse répéter facilement ses analyses au besoin et, comme mentionné plus haut, parce qu'il est impossible d'inclure en menus déroulant toutes les analyses statistiques possibles.
+
+À mon avis, SPSS devrait être laissé de côté par quiconque commence à utiliser des méthodes quantitaves. Il s'agit d'un bon logiciel, mais il a été créé il y a très longtemps et pour cette raison, sa syntaxe n'a jamais réellement été conçue pour être utilisée directement. En conséquence, le langage syntaxique de SPSS est réellement pénible à utiliser. Par ailleurs, SPSS est incroyablement dispendieux.
+
+Stata est un excelent logiciel et sa syntaxe est très complète et intuitive. Stata a aussi de bons menus déroulants qui peuvent être très utiles pour nous apprendre à utiliser la syntaxe puisque l'on peut faire une analyse d'abord en utilisant le menu déroulant, puis regarder la syntaxe produite par Stata. Il faut cependant payer la licence pour l'utiliser (entre 400\$ à 1000\$ suivant la version et le statut professionnel), ou ne l'utiliser que sur les postes informatiques disponibles dans les laboratoires universitaires. 
+
+R est aussi puissant que Stata (voir plus), et il est gratuit. Par ailleurs, il y a une très grande communeauté d'utilisateurs de R et il existe donc beaucoup de «packages» qu'il est possible de télécharger gratuitement pour ajouter des fonctions à R (Stata offre aussi cette possibilité, mais il y en a beaucoup moins). En conséquence, R est toujours en avance sur Stata et il permet de faire des analyses qui n'ont pas forcément encore été implémentées dans Stata. Le seul désavantage de R par rapport à Stata est que sa syntaxe est un peu plus difficile à apprendre, mais une fois qu'on la maîtrise, il n'y a vraiment plus aucune raison de s'ennuyer Stata. 
+
+Au final, l'apprentissage de n'importe quel logiciel implique forcément beaucoup d'essais-erreurs et des consultations fréquentes de notre ami Google. Stata est un peu plus facile à apprendre, mais puisqu'il faut apprendre un nouveau logiciel, aussi bien fournir le petit effort supplémentaire pour apprendre R qui est aussi complet, plus souple, gratuit, et qui offre une communeauté d'utilisateurs très réactive. 
+
+
+Nous pourrions continuer à voir séparément différentes fonctions de R, mais cela deviendrait vite interminable. Vous devriez maintenant avoir les bases pour saisir la logique de la syntaxe de R et pour avoir une idée générale de ce qu'est une syntaxe. C'est ce qui est important. Il est impossible de couvrir le fonctionnement de R sans aussi apprendre à faire des statistiques. Si vous décidez d'apprendre R, vous devrez de toute manière apprendre par essai-erreur et cela viendra avec la pratique. Google sera votre plus grand ami!
+
+Tournons-nous maintenant sur l'objectif principal de toute analyse statistique : décrire.
+

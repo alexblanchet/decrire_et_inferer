@@ -1,4 +1,9 @@
-h1:hello-bookdown Hello bookdown
-h2:a-section A section
-h3:an-unnumbered-section An unnumbered section
+h1:introduction-générale-à-r Introduction générale à R
+h2:les-packages Les packages
+h2:le-working-directory Le «working directory»
+h2:quelques-manipulations-initiales-avec-r Quelques manipulations initiales avec R
+h2:une-syntaxe-qui-roule-une-bonne-méthode-de-travail Une syntaxe qui roule : une bonne méthode de travail
+h2:charger-des-données Charger des données
+h2:voir-les-variables Voir les variables
+h2:tableau-croisé Tableau croisé
 
