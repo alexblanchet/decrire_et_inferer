@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 3 Décrire | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R</title>
+  <meta name="description" content="Chapitre 3 Décrire | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 3 Décrire | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 3 Décrire | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-générale-à-r.html"/>
+<link rel="next" href="inférer.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Décrire et inférer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objectifs</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#les-logiciels"><i class="fa fa-check"></i><b>1.1</b> Les logiciels</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html"><i class="fa fa-check"></i><b>2</b> Introduction générale à R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#les-packages"><i class="fa fa-check"></i><b>2.1</b> Les packages</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#le-working-directory"><i class="fa fa-check"></i><b>2.2</b> Le «working directory»</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#quelques-manipulations-initiales-avec-r"><i class="fa fa-check"></i><b>2.3</b> Quelques manipulations initiales avec R</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#une-syntaxe-qui-roule-une-bonne-méthode-de-travail"><i class="fa fa-check"></i><b>2.4</b> Une syntaxe qui roule : une bonne méthode de travail</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#charger-des-données"><i class="fa fa-check"></i><b>2.5</b> Charger des données</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#voir-les-variables"><i class="fa fa-check"></i><b>2.6</b> Voir les variables</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#tableau-croisé"><i class="fa fa-check"></i><b>2.7</b> Tableau croisé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="décrire.html"><a href="décrire.html"><i class="fa fa-check"></i><b>3</b> Décrire</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="décrire.html"><a href="décrire.html#une-équation-pour-décrire-une-variable"><i class="fa fa-check"></i><b>3.1</b> Une équation pour décrire une variable</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="décrire.html"><a href="décrire.html#quest-ce-que-cette-équation"><i class="fa fa-check"></i><b>3.1.1</b> Qu’est-ce que cette équation?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="décrire.html"><a href="décrire.html#la-réponse"><i class="fa fa-check"></i><b>3.1.2</b> La réponse</a></li>
+<li class="chapter" data-level="3.1.3" data-path="décrire.html"><a href="décrire.html#une-équation-générale-décrivant-la-variable"><i class="fa fa-check"></i><b>3.1.3</b> Une équation générale décrivant la variable?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="décrire.html"><a href="décrire.html#les-types-de-variables-et-éviter-de-faire-nimporte-quoi"><i class="fa fa-check"></i><b>3.2</b> Les types de variables et éviter de faire n’importe quoi</a></li>
+<li class="chapter" data-level="3.3" data-path="décrire.html"><a href="décrire.html#décrire-une-relation-entre-des-variables"><i class="fa fa-check"></i><b>3.3</b> Décrire une relation entre des variables</a></li>
+<li class="chapter" data-level="3.4" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-dichotomique"><i class="fa fa-check"></i><b>3.4</b> La régression linéaire simple avec une variable dichotomique</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="décrire.html"><a href="décrire.html#création-des-données"><i class="fa fa-check"></i><b>3.4.1</b> Création des données</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-continue"><i class="fa fa-check"></i><b>3.5</b> La régression linéaire simple avec une variable continue</a></li>
+<li class="chapter" data-level="3.6" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-avec-plusieurs-variables-indépendantes"><i class="fa fa-check"></i><b>3.6</b> La régression linéaire avec plusieurs variables indépendantes</a></li>
+<li class="chapter" data-level="3.7" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-un-exemple-avec-des-données-réelles"><i class="fa fa-check"></i><b>3.7</b> La régression linéaire, un exemple avec des données réelles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inférer.html"><a href="inférer.html"><i class="fa fa-check"></i><b>4</b> Inférer</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inférer.html"><a href="inférer.html#linférence-statistique-quelques-notions-théoriques"><i class="fa fa-check"></i><b>4.1</b> L’inférence statistique, quelques notions théoriques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="inférer.html"><a href="inférer.html#le-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>4.1.1</b> Le théorème de la limite centrale</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="inférer.html"><a href="inférer.html#léchantillonnage"><i class="fa fa-check"></i><b>4.2</b> L’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="inférer.html"><a href="inférer.html#exemple-dune-élection-à-deux-partis-55-45"><i class="fa fa-check"></i><b>4.2.1</b> Exemple d’une élection à deux partis (55-45)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inférer.html"><a href="inférer.html#exemple-dune-élection-serrée-51-49"><i class="fa fa-check"></i><b>4.2.2</b> Exemple d’une élection serrée (51-49)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="inférer.html"><a href="inférer.html#du-sondage-à-la-population"><i class="fa fa-check"></i><b>4.3</b> Du sondage à la population</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="inférer.html"><a href="inférer.html#la-marge-derreur"><i class="fa fa-check"></i><b>4.3.1</b> La marge d’erreur</a></li>
+<li class="chapter" data-level="4.3.2" data-path="inférer.html"><a href="inférer.html#la-différence-entre-deux-groupes-le-test-t"><i class="fa fa-check"></i><b>4.3.2</b> La différence entre deux groupes : Le Test <em>t</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="décrire" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapitre 3</span> Décrire<a href="décrire.html#décrire" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Si nous voulions décrire la taille de Serge, nous pourrions par exemple dire qu’il mesure 180cm. Si nous voulions décrire la taille de Serge et Janette, nous pourrions dire que Serge mesure 180cm et que Janette mesure 170cm. Si nous voulions décrire la taille de Serge, Janette et Albert, nous pourrions dire que Serge mesure 180cm, Janette 170cm et Albert 160cm. Nous pourrions continuer d’ajouter des personnes et décrire leur taille, mais à mesure que le nombre de personnes augmentera, il deviendra de plus en plus difficile de décrire la taille des personnes qui nous intéressent en se référant à la taille individuelle de chaque personne. Même l’individu le plus intelligent du monde ne parviendra pas à manipuler simultanément dans sa tête les tailles individuelles de 30 personnes (voir même 10). Pour cette raison, décrire des données implique aussi nécessairement les de <em>synthétiser</em>.</p>
+<p>Évidemment, on peut décrire un seul élément, mais aussi vouloir décrire la relation entre deux ou plusieurs éléments. En sciences sociales, nous nous intéressons à des choses qui varient. Les choses qui ne varient pas ne nous intéressent généralement pas, justement parce qu’elles ne varient pas. Par exemple, le fait que chaque personne lisant ce texte soit née sur terre (il n’y a pas d’humains né ailleurs que sur terre) est aussi rassurant qu’innintéressant. En statistiques, nous dirons donc que nous nous intéressons aux «variables» qui sont des «choses qui varient» (tadam!), par opposition aux choses qui ne varient pas, qui sont des constantes. Ainsi, lorsque nous cherchons à décrire un phénomène, nous voulons, en termes statistiques, décrire une variable ou des relations entre variables. Concentrons-nous pour l’instant sur la description d’une seule variable.</p>
+<div id="une-équation-pour-décrire-une-variable" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Une équation pour décrire une variable<a href="décrire.html#une-équation-pour-décrire-une-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Je voudrais maintenant que vous lisiez l’équation ci-dessous sans lire ce qui vient sous la section «La réponse». Je vais ici décrire ce que veulent dire les symboles et je voudrais que vous réfléchissiez à ce que peut bien vouloir dire cette équation. L’objectif est tout simplement de commencer à vous habituer à réfléchir en termes mathématiques, et surtout de vous faire voir que les formules n’ont rien de magique si l’on prend simplement le temps de s’y arrêter un peu.</p>
+<div id="quest-ce-que-cette-équation" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Qu’est-ce que cette équation?<a href="décrire.html#quest-ce-que-cette-équation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[? = \frac { 1 }{ n } \sum_{ i=1 }^{ n }{ x_i }\]</span>
+Le signe <span class="math inline">\(\sum\)</span> peut se lire comme «la somme de tout ce qui vient à droite». <span class="math inline">\(x_i\)</span> représente la valeur d’un individu <span class="math inline">\(i\)</span> sur la variable <span class="math inline">\(x\)</span>. Donc, <span class="math inline">\(\sum x_i\)</span> implique que nous fassions la somme de toues les <span class="math inline">\(x\)</span> individuels. Imaginez <span class="math inline">\(x\)</span> comme étant le nom d’une colonne dans un fichier excel et chaque <span class="math inline">\(x_i\)</span> représente une cellule particulière de cette colonne. Par exemple, <span class="math inline">\(x_1\)</span> réfère à la valeur de <span class="math inline">\(x\)</span> à la ligne 1, <span class="math inline">\(x_2\)</span> la valeur de <span class="math inline">\(x\)</span> à la ligne 2, etc. <span class="math inline">\(i=1\)</span> sous le signe de <span class="math inline">\(\sum\)</span> signifie que la somme qui nous intéresse commence à la ligne 1. Le <span class="math inline">\(n\)</span> au-dessus du signe de <span class="math inline">\(\sum\)</span> signifie que nous arrêtons l’addition à <span class="math inline">\(n\)</span>. C’est donc dire qu’ici, nous additionnons toutes les valeurs individuelles de <span class="math inline">\(x_1\)</span> à <span class="math inline">\(x_n\)</span>, autrement dit les valeurs de <span class="math inline">\(x\)</span> pour toutes les lignes.</p>
+<p>Donc, <span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span> signifie que nous additionnons toutes les valeurs individuelles de <span class="math inline">\(x\)</span>. Nous voyons ensuite que <span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span> est multiplié par <span class="math inline">\(\frac { 1 }{ n }\)</span>.</p>
+<p>Réfléchissez un instant à ce que veut dire cette équation avant de passer à la section «La réponse». Qu’est-ce que peut bien nous donner le fait d’additionner toutes les lignes d’une colonne (<span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span>) et de multiplier cette somme par <span class="math inline">\(\frac { 1 }{ n }\)</span>?</p>
+</div>
+<div id="la-réponse" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> La réponse<a href="décrire.html#la-réponse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’équation ci-dessus est tout simplement celle qui nous permet de calculer la moyenne d’une variable. Il s’agit de l’équation «officielle». Si vous n’avez pas trouvé la réponse, la raison est probablement que ce n’est pas de cette manière que la plupart d’entre-nous calculons une moyenne. Habituellement, nous faisons la somme des valeurs d’une variable (donc <span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span>) et nous divisons cette somme par le nombre d’unités de cette variable (ou <span class="math inline">\(n\)</span>). Autrement dit, ce que vous avez probablement tendance à faire est l’équation suivante :</p>
+<p><span class="math display">\[\bar{x} = \frac { \sum_{ i=1 }^{ n }{ x_i } }{ n }\]</span>
+Cette équation est équivalente à la première, mais réfléchissons quelques instants pour bien comprendre pourquoi elles donnent forcément le même résultat.</p>
+<p>Les deux équations sont formées de la même somme <span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span> qui est soit divisée par <span class="math inline">\(n\)</span>, soit multipliée par <span class="math inline">\(\frac { 1 }{ n }\)</span>. Si par exemple nous nous intéressions à la taille moyenne d’un groupe de 50 individus, <span class="math inline">\(\sum_{ i=1 }^{ 50 }{ x_i }\)</span> veut donc dire que nous additionnons la taille de chaque individu (<span class="math inline">\(x_i\)</span>) pour obtenir la taille totale du groupe en entier. Lorsque vous calculez une moyenne, vous avez probablement tendance a diviser la somme totale du groupe par <span class="math inline">\(n\)</span>, ici le nombre d’individus dans notre groupe, soit 50. En divisant la somme totale du groupe par le nombre d’individus qui le compose, on se trouve donc à «répartir» la taille totale du groupe parmi les 50 individus. C’est tout à fait correct et logique. Cependant, remarquez comment, plutôt que de «répartir» la somme totale sur <span class="math inline">\(n\)</span>, la première équation donne plutôt un «poids» à chaque individu en divisant 1 par <span class="math inline">\(n\)</span>.</p>
+<p>Imaginons que la taille totale de nos 50 individus donne 9000cm (<span class="math inline">\(\sum_{ i=1 }^{ n }{ x_i }\)</span>=9000). La formule que vous utilisez habituellement serait donc <span class="math inline">\(\bar{x}= \frac{9000}{50} = 180\)</span>. Si nous procédons plutôt en suivant la première formule, nous remarquons d’abord que <span class="math inline">\(\frac{1}{50}\)</span> = 0.02. Dans un groupe de 50, un individu représente donc <span class="math inline">\(\frac{1}{50}\)</span>, ou 0.02 du total des individus. La première formule revient donc à faire <span class="math inline">\(\bar{x}= 0.02 \times 9000 = 180\)</span>.</p>
+<p>Avec la première formule, nous voulons donc obtenir une certaine proportion (ici 0.02, ou <span class="math inline">\(\frac{1}{50}\)</span>) du total des <span class="math inline">\(x_i\)</span>, alors qu’avec la formule «habituelle», on «réparti» ce total sur le nombre d’éléments dont il est composé. Plutôt que de «répartir» la taille totale sur le nombre d’individus, la première formule «pondère» le poids de chaque individu en remenant le «poids» d’un seul individu sur le total du groupe sur une unité de 1 (<span class="math inline">\(\frac{1}{n}\)</span>). La logique est légèrement différente, mais elle revient au même.</p>
+</div>
+<div id="une-équation-générale-décrivant-la-variable" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Une équation générale décrivant la variable?<a href="décrire.html#une-équation-générale-décrivant-la-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’objectif de la section précédente était tout simplement de vous faire voir la «mécanique» d’une équation avec quelque chose que la plupart d’entre-vous utilisez régulièrement. L’exemple de la moyenne nous permet aussi de voir comment deux logiques différentes, mais équivalentes, peuvent aussi être écrites de manière différentes mathématiquement. En utilisant le concept de moyenne que la plupart d’entre-vous connaissez bien, je tente de diminuer votre angoisse <span class="citation">(<a href="#ref-tobias1993" role="doc-biblioref">Tobias 1993</a>)</span> matématique face aux équations!</p>
+<p>Ceci étant, l’un des avantages des équations est qu’elles nous permettent aussi de proposer une description claire et succincte d’une variable. Imaginons que nous voulions décrire la variable <span class="math inline">\(x\)</span> en une seule équation et de manière la <em>plus complète possible</em>. En conservant notre exemple du groupe de 50 personnes ayant une taille moyenne de 180cm, nous pourrions dire que la moyenne de <span class="math inline">\(x\)</span> = 180cm et cette information est très certainement utile. Cependant, la moyenne du groupe demeure tout de même une information générale qui n’est pas forcément vraie pour chaque personne, elle nous informe sur le groupe entier, pas sur chaque individu spécifique. Nous pourrions cependant utiliser la moyenne afin de décrire la variable à l’aide d’une équation qui sera «vraie» pour chaque individu. C’est ce que fait l’équation suivante :
+<span class="math display">\[x_i= \frac { 1 }{ n } \sum_{ i=1 }^{ n }{ x_i } + e_i\]</span>
+Ici, <span class="math inline">\(x_i\)</span> équivaut encore à la valeur de <span class="math inline">\(x\)</span> pour l’individu <span class="math inline">\(i\)</span>. Remarquons que la formule est pratiquement identique à la formule de la moyenne, mais nous y avons ajouté <span class="math inline">\(+ e_i\)</span>, où <span class="math inline">\(e_i\)</span> signifie <em>l’écart</em> de chaque individu <span class="math inline">\(i\)</span> par rapport à la moyenne (<span class="math inline">\(\frac { 1 }{ n } \sum_{ i=1 }^{ n }{ x_i } = 180\)</span>).</p>
+<p>Donc, si par exemple l’individu 2 mesure 190cm (<span class="math inline">\(x_2 = 190\)</span>), la valeur de <span class="math inline">\(e_2\)</span> sera de 10. Ainsi, <span class="math inline">\(x_2 = 180 + 10 = 190\)</span> et nous voyons que l’équation proposée décrit adéquatement l’individu 2. Si si l’individu 3 mesure 170cm (<span class="math inline">\(x_3 = 170\)</span>), la valeur de <span class="math inline">\(e_3\)</span> sera de -10. <span class="math inline">\(e_i\)</span> équivaut donc à la distance d’un individu par rapport à la moyenne du groupe.</p>
+<p>Ces écarts individuels à la moyenne peuvent être mis au carré (pour éliminer les signes négatifs) et additionnés ensemble. Cela nous donne ce que nous appelons la <em>somme du carré des écarts</em>, c’est-à-dire le grand total de tous les <span class="math inline">\(e_i\)</span> mis à la 2 (<span class="math inline">\(e_i^2\)</span>). L’une des propriété de la moyenne est qu’elle est le nombre qui <em>minimise</em> cette somme. Aucun autre nombre que la moyenne d’une distribution ne peut donner une <em>somme du carré des écarts</em> plus petite. Une moyenne n’est pas forcément le meilleur nombre à utiliser pour synthétiser une variable, mais la moyenne est systématiquement le chiffre qui est le plus proche de toutes les valeurs individuelles d’une variable donnée. Nous verrons plus tard que la régression présente une caractéristique similaire et il est donc utile que vous compreniez pourquoi cette caractéristique est intéressante à partir du concept de moyenne que vous maîtrisez déjà.</p>
+<p>Le concept d’écart individuel à la moyenne est aussi très utile parce qu’il nous permet d’écrire une règle générale qui décrira précisément toutes nos données et ce en tenant compte de la variation individuelle autour de notre moyenne. Pour une équation générale, nous pourrions simplifier encore plus et écrire :
+<span class="math display">\[x_i= \bar{x} + e_i\]</span>
+Où <span class="math inline">\(\bar{x}\)</span> (prononcé «x-barre») a simplement remplacé l’équation plus détaillée de la moyenne. La taille précise de l’individu 2 décrit plus haut peut être écrite :
+<span class="math display">\[x_2= \bar{x} + e_2\]</span>
+<span class="math display">\[x_2 = 180 + 10 = 190\]</span></p>
+<p>Vous voyez donc que l’on peut décrire de manière succincte une variable en établissant une caractéristique de cette variable qui s’applique à tout le groupe (ici la moyenne du groupe) et en y ajoutant la <em>déviation</em> (ou l’écart) de chaque individu par rapport à cette caractéristique commune. Ce qui varie d’un individu à l’autre (les valeurs de <span class="math inline">\(x\)</span> et <span class="math inline">\(e\)</span>) sont indicés par <span class="math inline">\(i\)</span> (<span class="math inline">\(x_i\)</span> et <span class="math inline">\(e_i\)</span>), alors que ce qui est valable pour tout le groupe (la moyenne) n’a pas d’indice (<span class="math inline">\(\bar{x}\)</span>). Les indices nous permettent de spécifier plus clairement ce à quoi nous référons. Ceci étant, il arrive fréquemment qu’ils soient omis lorsqu’il n’y a aucun doute sur l’interprétation d’une équation.</p>
+<p>Il est fort probable que vous ne décriviez jamais la moyenne d’un groupe d’individus avec l’équation que nous venons de voir, mais l’objectif était simplement de vous faire voir comment on peut formuler une description générale valable pour tous les individus d’un groupe à partir d’une caractéristique commune au groupe. L’idée n’est donc pas ici que vous appliquiez cette formule, mais que vous compreniez le concept derrière l’idée de «déviation» individuelle par rapport à la caractéristique commune. Cette compréhension intuitive vous sera très utile lorsque nous arriverons à la régression.</p>
+<p>Il y a bien sûr de nombreuses autres manières de décrire une variable.</p>
+<ul>
+<li>Les mesures de tendances centrales : mode, médiane, moyenne</li>
+<li>Les mesures de variation : étendue, variance, écart-type</li>
+<li>Les mesure d’asymétrie : coefficient d’asymétrie</li>
+</ul>
+</div>
+</div>
+<div id="les-types-de-variables-et-éviter-de-faire-nimporte-quoi" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Les types de variables et éviter de faire n’importe quoi<a href="décrire.html#les-types-de-variables-et-éviter-de-faire-nimporte-quoi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La manière la plus adéquate de décrire une variable est aussi liée au <em>type de variable</em>. Les variables peuvent être :</p>
+<ul>
+<li>Nominales
+<ul>
+<li>Une variable qui décrit des états différents qui ne sont pas ordonnancés hiérarchiquement.</li>
+<li>Les catégories doivent être exhaustives et mutuellement exclusives.</li>
+<li>Exemples : la couleur des yeux ou des cheveux. Le choix de vote (PLQ, PQ, CAQ, QS).</li>
+</ul></li>
+<li>Ordinales
+<ul>
+<li>Une variable qui varie en fonction de différents états qui <em>peuvent</em> être ordonnancés hiérarchiquement, mais dont la distance entre ces états ne peut être réellement établie.</li>
+<li>Exemples : très satisfait, satisfait, insatisfait, très insatisfait. Un peu, beaucoup, pationnément, à la folie.</li>
+</ul></li>
+<li>Continues (parfois appelées «d’intervalles/ratio»)
+<ul>
+<li>Une variable qui peut être mesurée par une unité standard.</li>
+<li>Exemples: le poids, la taille, la distance, le temps.</li>
+</ul></li>
+<li>Dichotomiques (parfois appelées «dummy»)
+<ul>
+<li>Comme les variables nominales, mais avec seulement deux catégories.</li>
+<li>Exemples : homme/femme, riche/pauvre, avoir un diplôme uiversitaire/ne pas en avoir.</li>
+</ul></li>
+</ul>
+<p>Contrairement aux variables nominales et ordinales, les variables dichotomiques ont cetains avantages qui viennent du fait qu’elles n’ont que deux catégories. Elles peuvent notamment être taitées numériquement (0 et 1) même si les chiffres 0 et 1 réfèrent à des catégories distinctes qui ne sont pas ordonancées hiérarchiquement. Par exemple, il ne fait aucun sens de faire la moyenne d’une variable nominale ou ordinale : calculer la moyenne de la couleur des yeux des gens dans une classe n’a pas de sens. Par contre, même s’il ne fait pas de sens de calculer la «moyenne du sexe» des gens dans une classe, cette moyenne nous donnera quand même un chiffre interprétable : la proportion d’hommes et de femmes. Par exemple, si nous avons 4 hommes (codés 0) et 6 femmes (codées 1), la moyenne nous donnera <span class="math inline">\(\frac{6}{10}\)</span> = 0.6, donc la proportion de la catégorie qui est codée 1, ici les femmes. Inversement, nous saurons aussi forcément qu’il y a 40% d’hommes.</p>
+<p>Ceci étant, lorsque l’on fait des analyses statistiques, il est important de faire attention au type de variables que nous utilisons si l’on veut les décrire adéquatement. C’est également le cas lorsque nous voulons décrire une relation entre deux variables. Peu importe le type de variable, les logiciels et les procédures statistiques traitent des colones de nombres. <em>Un logiciel n’a aucune idée de ce que ce que ces nombres veulent dire, ni s’il fait du sens de faire la procédure que vous lui demandez d’effectuer</em>.</p>
+<p>Si vous avez un groupe d’individus et que vous vous intéressez à la couleur de leurs yeux qui peuvent être bleus (codé 1), bruns (codé 2), pairs (codé 3), ou verts (codé 4); le logiciel vous donnera un résultat si vous lui demandez la moyenne de la couleurs de leurs yeux. Le nombre n’aura aucun sens, mais le logiciel ne le saura pas. Il aura simplement calculé la moyenne des nombre codés de 1 à 4 dans la colone «couleur des yeux» sans savoir qu’ils réfèrent en fait à des couleurs. C’est à vous de le savoir. Nous verrons en chemin que les logiciels peuvent traiter des variables de plusieurs format – par exemple des variables numériques ou des variables de facteur (bleu, brun, pair, vert au lieu des nombres), et ces différents types de variables peuvent être traitées différemment suivant les logiciels. Au final cependant, tout est en quelque part transformé en un chiffre. C’est à vous de vous assurer que le tout fait du sens et <em>aucune procédure statistique ne peut se substituer à votre jugement</em>.</p>
+</div>
+<div id="décrire-une-relation-entre-des-variables" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Décrire une relation entre des variables<a href="décrire.html#décrire-une-relation-entre-des-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si bien sûr nous pouvons souvent nous intéresser à la description d’une seule variable (par exemple : pour quel parti les gens ont le plus l’intention de voter lors des prochaines élections?), on s’intéresse aussi souvent à la <em>relation</em> entre des variables. La raison en est tout simplement que nous cherchons des <em>explications</em> à un phénomène (une variable) qui nous intéresse et nous désirons donc voir si le phénomène diffère (si la variable varie) en fonction d’un autre phénomène. Pour cette raison, nous nous intéressons souvent aux corrélations entre des variables.</p>
+<p>Une mesure souvent utilisée pour évaluer la relation entre deux variables est le coefficient de corrélation. Ce coefficient varie en -1 et 1. Un coefficient de 1 indique une relation positive parfaite, un coefficient de -1 une relation négative parfaite et un coefficient de 0 indique une absence «parfaite» de relation entre les variables. Par exemple, imaginons que nous avons les variables suivantes pouitA, pouitB, pouitC et pouitD :</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="décrire.html#cb86-1" aria-hidden="true" tabindex="-1"></a>pouitA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb86-2"><a href="décrire.html#cb86-2" aria-hidden="true" tabindex="-1"></a>pouitB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>) <span class="co"># Similaire à pouitA, mais de 6 à 10</span></span>
+<span id="cb86-3"><a href="décrire.html#cb86-3" aria-hidden="true" tabindex="-1"></a>pouitC <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># Inverse de pouitA</span></span>
+<span id="cb86-4"><a href="décrire.html#cb86-4" aria-hidden="true" tabindex="-1"></a>pouitD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>) <span class="co"># Quelques variations par rapport à pouitA</span></span></code></pre></div>
+<p>PouiA et PouitB auront une corrélation de 1, alors que PouitC aura une corrélation de -1 avec PouitA et PouitB. À vue d’oeil, PouitD devrait avoir une corrélation d’autour de 0.75 avec pouitA et pouitB, et d’environ -0.75 avec pouitC.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="décrire.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitA et PouitB</span></span>
+<span id="cb87-2"><a href="décrire.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitA, pouitB) <span class="co"># cor() pour &quot;correlation&quot;</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="décrire.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitA et PouitC</span></span>
+<span id="cb89-2"><a href="décrire.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitA, pouitC) <span class="co"># Quand puitA augmente, pouitC diminue</span></span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="décrire.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitB et PouitC</span></span>
+<span id="cb91-2"><a href="décrire.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitB, pouitC) <span class="co"># Quand puitB augmente, pouitC diminue</span></span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="décrire.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitA et PouitD</span></span>
+<span id="cb93-2"><a href="décrire.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitA, pouitD) <span class="co"># Quand puitA augmente, pouitD augmente</span></span></code></pre></div>
+<pre><code>## [1] 0.7698004</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="décrire.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitB et PouitD</span></span>
+<span id="cb95-2"><a href="décrire.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitB, pouitD) <span class="co"># Quand puitB augmente, pouitD augmente</span></span></code></pre></div>
+<pre><code>## [1] 0.7698004</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="décrire.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrélation entre PouitC et PouitD</span></span>
+<span id="cb97-2"><a href="décrire.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pouitC, pouitD) <span class="co"># Quand puitC augmente, pouitD diminue</span></span></code></pre></div>
+<pre><code>## [1] -0.7698004</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="décrire.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Débarassons-nous de ces pouits...</span></span>
+<span id="cb99-2"><a href="décrire.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(pouitA, pouitB, pouitC, pouitD) <span class="co"># rm() pour &quot;remove&quot; comme vu plus haut.</span></span></code></pre></div>
+<p>En règle générale, un coefficient de 0.5 (ou de -0.5) ou plus en sciences sociales est généralement considéré comme relativement fort. Plus le chiffre en termes absolu (c’est-à-dire sans tenir compte du signe négatif ou positif) est élevé, plus la relation est forte. Cependant, nous ne nous étendrons pas ici sur ce coefficient ni sur son calcul puisqu’il est relativement simple et que je souhaite que nous nous concentrions sur la régression, qui est abondement utilisée en méthodes quantitatives. Aussi, faites attention de <em>ne pas confondre les coefficients de corrélation avec les coefficients de régression</em>. Un coefficient de régression de 0.25 (ou même de 0.02) peut être très fort dépendemment de l’échelle de mesure des variables concernées.</p>
+<p>Ceci étant, une chose doit être précisée dès le début : <em>la corrélation n’équivaut pas à la causalité!</em> La question de la causalité est très complexe et controversée. Gardons-nous donc d’en discuter et contentons-nous de dire que nous cherchons à <em>comprendre</em> un phénomène qui nous intéresse<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Par <em>comprendre</em>, nous voulons donc dire que nous voulons <em>expliquer</em> ce qui fait en sorte que le phénomène survient ou non, ou mieux décrire comment au juste il survient. Nous avons une certaine thèse sur les facteurs qui font en sorte que le phénomène advient ou n’advient pas, ou qu’il advient d’une manière plutôt que d’une autre. Trois règles logiques doivent minimalement être respectées :</p>
+<ol style="list-style-type: decimal">
+<li>La chose qui explique le phénomène doit être antérieure (temporellement, logiquement, ou théoriquement) à celui-ci.
+<ul>
+<li>Temporellement : ce qui arrive aujourd’hui ne peut expliquer ce qui est arrivé hier. C’est bêtement logique.</li>
+<li>Théoriquement : Même si une explication potentielle est temporellement antérieure à un phénomène, il faut avoir un argument raisonnable pour affirmer qu’ils sont liés. Cet argument (ou idéalement <em>ces</em> arguments) n’a pas grand-choses à voir avec les statistiques. Il s’agit ici de réflexion théorique et empirique.</li>
+</ul></li>
+<li>Pour qu’une chose en explique une autre, elle doit lui être liée d’une manière ou d’une autre. Ceci implique donc forcément la présence d’une association entre le facteur explicatif et le phénomène que l’on veut expliquer.
+<ul>
+<li>En méthode quantitatives, cela implique que les deux éléments doivent être associés statistiquement. C’est-à-dire que les valeurs des deux éléments doivent être corrélées.</li>
+<li>Une corrélation peut être <em>positive</em> : quand les valeurs d’une variable sont élevées, celles d’une autre variable ont tendance à être plus élevées.</li>
+<li>Une corrélation peut être <em>négative</em> : quand les valeurs d’une variable sont élevées, celles d’une autre variable ont tendance à être plus faibles, ou inversement.</li>
+</ul></li>
+<li>Le lien entre le facteur explicatif et le phénomène d’intérêt ne doit pas être fallacieux, c’est-à-dire qu’il ne doit pas être généré par un autre facteur qui explique les deux éléments initiaux.
+<ul>
+<li>Par exemple, si l’on remarque que les dégâts lors d’un incendie sont plus importants lorsqu’il y a plus de pompiers pour le combattre, il serait évidemment fallacieux d’en conclure que les pompiers causent les dégâts. C’est <em>l’intensité</em> de l’incendie qui rend nécessaire la présence d’un plus grand nombre de pompiers pour le combattre <em>et</em> c’est aussi cette intensité qui explique que les dégâts sont plus importants. Le fait qu’il y ait plus de dégâts quand il y a plus de pompiers (une simple association statistique) n’implique absoluement pas que les pompiers produisent les dégâts.</li>
+</ul></li>
+</ol>
+</div>
+<div id="la-régression-linéaire-simple-avec-une-variable-dichotomique" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> La régression linéaire simple avec une variable dichotomique<a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-dichotomique" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mon objectif est ici que vous développiez une compréhension intuitive de ce qu’est la régression linéaire et de ce que les résultats veulent dire au juste. Nous n’allons pas nous amuser à calculer à la main des régressions, mais nous allons en faire avec des données que nous créerons nous-mêmes. Pour cette section, oubliez les étoiles et concentrez-vous uniquement les coefficients. Les coefficients permettent de <em>décrire</em> les données, les étoiles ont trait à l’inférence. Or avant d’inférer quoique ce soit, encore faut-il le décrire.</p>
+<div id="création-des-données" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Création des données<a href="décrire.html#création-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous allons ici créer des données que nous inventerons nous-mêmes pour fins d’illustration. Nous nous intéresserons aux notes qu’un groupe de 100 élèves ont reçu à leur dernier examen du cours d’introduction à la pétanque full contact (PFC 1000). Nous nous pencherons sur l’impact du sexe des élèves et du nombre d’heures d’étude sur la note qu’ils ont reçu.</p>
+<p>La syntaxe ci-bas crée les données et quelques explications sont fournies en annotation. Vous n’avez cependant pas à comprendre cette syntaxe pour comprendre ce qui suivra.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="décrire.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour réplication </span></span>
+<span id="cb100-2"><a href="décrire.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">987654321</span>) <span class="co"># R génère des chiffres aléatoirement et pour</span></span>
+<span id="cb100-3"><a href="décrire.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># qu&#39;il le fasse de manière constante d&#39;une fois à l&#39;autre, on</span></span>
+<span id="cb100-4"><a href="décrire.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># peut lui dire de le faire d&#39;une manière exacte. Si vous ne le faites pas,</span></span>
+<span id="cb100-5"><a href="décrire.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vous obtiendrez probablement des résultats différents de ceux du document</span></span>
+<span id="cb100-6"><a href="décrire.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tout simplement parce que R génèrera aléatoirement des données un peu </span></span>
+<span id="cb100-7"><a href="décrire.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># différentes.</span></span>
+<span id="cb100-8"><a href="décrire.html#cb100-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-9"><a href="décrire.html#cb100-9" aria-hidden="true" tabindex="-1"></a>fille <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="co"># créer 100 individus qui ont une chance de </span></span>
+<span id="cb100-10"><a href="décrire.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 1/2  d&#39;être codé 1 dans l&#39;objet &quot;fille&quot;, les autres seront codés 0. </span></span>
+<span id="cb100-11"><a href="décrire.html#cb100-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-12"><a href="décrire.html#cb100-12" aria-hidden="true" tabindex="-1"></a>heures.etude <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="fl">4.5</span> <span class="sc">+</span> <span class="fl">1.5</span><span class="sc">*</span>fille, <span class="at">sd=</span><span class="fl">1.5</span> ) <span class="co"># Crée la variable</span></span>
+<span id="cb100-13"><a href="décrire.html#cb100-13" aria-hidden="true" tabindex="-1"></a><span class="co"># heures études avec une moyenne de 4.5, les filles qui étudient en moyenne </span></span>
+<span id="cb100-14"><a href="décrire.html#cb100-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.5 heures de plus que la garçons, le tout avec une erreur standard de </span></span>
+<span id="cb100-15"><a href="décrire.html#cb100-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.5 pour mettre une peu de variation dans tout cela.</span></span>
+<span id="cb100-16"><a href="décrire.html#cb100-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-17"><a href="décrire.html#cb100-17" aria-hidden="true" tabindex="-1"></a>notes <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">35</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>fille <span class="sc">+</span> <span class="dv">5</span><span class="sc">*</span>heures.etude, <span class="at">sd=</span><span class="dv">6</span>) <span class="co"># Crée la </span></span>
+<span id="cb100-18"><a href="décrire.html#cb100-18" aria-hidden="true" tabindex="-1"></a><span class="co"># variable notes avec une moyenne de 35, avec les filles qui ont en moyenne </span></span>
+<span id="cb100-19"><a href="décrire.html#cb100-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4 de plus que la garçons, les heures d&#39;études apportant en moyenne</span></span>
+<span id="cb100-20"><a href="décrire.html#cb100-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 points de plus par heure, le tout avec une erreur standard de 6 </span></span>
+<span id="cb100-21"><a href="décrire.html#cb100-21" aria-hidden="true" tabindex="-1"></a><span class="co"># pour mettre une peu de variation dans tout cela. </span></span>
+<span id="cb100-22"><a href="décrire.html#cb100-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-23"><a href="décrire.html#cb100-23" aria-hidden="true" tabindex="-1"></a>sexe <span class="ot">&lt;-</span> <span class="fu">factor</span>(fille, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;garçon&quot;</span>, <span class="st">&quot;fille&quot;</span>)) <span class="co"># crée la variable sexe</span></span>
+<span id="cb100-24"><a href="décrire.html#cb100-24" aria-hidden="true" tabindex="-1"></a><span class="co"># à partir de la variable numérique &quot;fille&quot;. Sexe sera traité comme un</span></span>
+<span id="cb100-25"><a href="décrire.html#cb100-25" aria-hidden="true" tabindex="-1"></a><span class="co"># facteur ce qui ne change rien mathématiquement mais qui simplifie </span></span>
+<span id="cb100-26"><a href="décrire.html#cb100-26" aria-hidden="true" tabindex="-1"></a><span class="co"># la création des graphiques que nous ferons plus tard (Voir la note de</span></span>
+<span id="cb100-27"><a href="décrire.html#cb100-27" aria-hidden="true" tabindex="-1"></a><span class="co"># bas de page 3).</span></span>
+<span id="cb100-28"><a href="décrire.html#cb100-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-29"><a href="décrire.html#cb100-29" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(notes, sexe, heures.etude, fille) <span class="co"># place les  </span></span>
+<span id="cb100-30"><a href="décrire.html#cb100-30" aria-hidden="true" tabindex="-1"></a><span class="co"># variables dans une même matrice (i.e. un seul object avec 4 colones)</span></span>
+<span id="cb100-31"><a href="décrire.html#cb100-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-32"><a href="décrire.html#cb100-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilisons la fonction Head() histoire de mieux voir les données. </span></span>
+<span id="cb100-33"><a href="décrire.html#cb100-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data) <span class="co"># Nous montre les 6 premières rangées des données</span></span></code></pre></div>
+<pre><code>##      notes   sexe heures.etude fille
+## 1 56.36004 garçon     3.429696     0
+## 2 70.16088  fille     5.102714     1
+## 3 61.71704  fille     4.780638     1
+## 4 70.84951 garçon     5.656184     0
+## 5 72.49611  fille     3.883307     1
+## 6 84.08077 garçon     8.094016     0</code></pre>
+<p>Vous voyez qu’une fois réunie en une seule matrice (comme une feuille d’un fichier excel), nos variables ont chacune une colone et les données individuelles sont en rangées. Le tableau ci-haut ne montre que 6 de ces rangées, mais il y en a une par élève, donc 100 au total. Ayez donc en tête que nos données sont en fait très semblables à un fichier excel dans lequel nos variables sont en colones et les scores de chaque élève sur ces variables sont en rangées. <em>Encore une fois, les logiciels et les procédures statistiques traitent des colones de chiffres. C’est à vous de savoir ce que ces colones signifient et si ce que vous demandez au logiciel a du sens</em>.</p>
+<p>Nous pouvons avoir plus de détails sur chacune des variables si nous le souhaitons.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="décrire.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##      notes           sexe     heures.etude          fille     
+##  Min.   :37.28   garçon:44   Min.   : 0.07104   Min.   :0.00  
+##  1st Qu.:56.74   fille :56   1st Qu.: 4.10012   1st Qu.:0.00  
+##  Median :62.87               Median : 5.18805   Median :1.00  
+##  Mean   :63.41               Mean   : 5.25523   Mean   :0.56  
+##  3rd Qu.:69.82               3rd Qu.: 6.61722   3rd Qu.:1.00  
+##  Max.   :94.28               Max.   :11.28492   Max.   :1.00</code></pre>
+<p>L’objet «data» contient quatre variables (colones) : notes, sexe, heures.etude et fille. La variable sexe est une variable de facteur («factor» ou «character» en anglais dans R) en ce sens qu’elle ne contient pas de chiffres, mais des mots. Les cellules de cette colone contiennent soit le mot «garçon», soit le mot «fille». La variable fille est identique, mais elle est numérique. Ses cellules contiennent un 0 si l’élève est un garçon et le chiffre 1 si l’élève est une fille. R sait que la variable «sexe» est un facteur (elle est «encodée» de cette manière), mais il ne sait pas que la variable fille peut aussi être considérée comme tel puisque cette colone ne contient que les chiffres 0 ou 1. En conséquence, R nous donne des infomrations différentes à propos de ces variables. Ceci étant, qu’elle soit numérique ou en facteur, la variable sexe (ou fille) est dichotomique et il n’y a aucune différence à traiter cette variable comme facteur ou comme des valeur numériques. Ce ne serait cependant pas le cas si nous avions à faire à une variable ordinale ou nominale.</p>
+<p>Nous voyons donc qu’il y a 56 filles et 44 garçons. Ce n’est pas 50% pile puisque j’ai demandé à R qu’il y ait un élément aléatoire dans la génération des données afin qu’elles ressemblent davantage à des «vraies» données. Cependant, la loi des grands nombre fait en sorte que si nous avions créé un échantillon plus gros, la proportion se rapprocherait encore plus de 50% de filles et de garçons, puisque j’ai demandé à R d’avoir <em>environ</em> 50% d’élèves de chaque sexe.</p>
+<p>Intéressons nous d’abord à la moyenne des notes de tous les élèves. Nous l’avons déjà vu dans le tableau ci-haut, mais demandons tout de même à R de nous donner spécifiquement cette moyenne.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="décrire.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Puisque la variable «notes» est dans l&#39;objet data, il faut d&#39;abord dire à </span></span>
+<span id="cb104-2"><a href="décrire.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># R l&#39;objet, puis la variable avec un signe de $ entre les deux.</span></span>
+<span id="cb104-3"><a href="décrire.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>notes) <span class="co"># Nous demandons la moyenne de notes dans l&#39;objet data</span></span></code></pre></div>
+<pre><code>## [1] 63.41256</code></pre>
+<p>Nous voyons donc que la moyenne générale est de 63.4125571. Cette moyenne est-elle différente selon le sexe? La manière la plus simple de répondre à cette question est tout simplement de faire un tableau croisé des notes en fonction du sexe. Faisons-le.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="décrire.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nous chargerons ici le premier «package». R est ouvert par défaut avec</span></span>
+<span id="cb106-2"><a href="décrire.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co"># des fonctions qui sont toujours actives, mais afin de minimiser </span></span>
+<span id="cb106-3"><a href="décrire.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l&#39;utilisation de la mémoire ram de l&#39;ordinateur, on doit activer</span></span>
+<span id="cb106-4"><a href="décrire.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co"># les «packages» supplémentaires dont on a besoin dans une session. Cela</span></span>
+<span id="cb106-5"><a href="décrire.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># permet d&#39;éviter que des fonctions que nous n&#39;utilisons pas dans une </span></span>
+<span id="cb106-6"><a href="décrire.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co"># session soient actives inutilement. Des «packages» supplémentaires </span></span>
+<span id="cb106-7"><a href="décrire.html#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="co"># peuvent aussi être téléchargés et être ensuite activés au besoin. </span></span>
+<span id="cb106-8"><a href="décrire.html#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Les packages supplémentaires ne doivent être téléchargés qu&#39;une seule </span></span>
+<span id="cb106-9"><a href="décrire.html#cb106-9" aria-hidden="true" tabindex="-1"></a><span class="co"># fois et ils sont ensuite dans la «library» et sont traités comme </span></span>
+<span id="cb106-10"><a href="décrire.html#cb106-10" aria-hidden="true" tabindex="-1"></a><span class="co"># n&#39;importe quel autre package. Les packages n&#39;ont besoin d&#39;être activés </span></span>
+<span id="cb106-11"><a href="décrire.html#cb106-11" aria-hidden="true" tabindex="-1"></a><span class="co"># qu&#39;une seule fois dans une session. </span></span>
+<span id="cb106-12"><a href="décrire.html#cb106-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Vous pouvez aussi consulter le menu «Packages» dans le panel</span></span>
+<span id="cb106-13"><a href="décrire.html#cb106-13" aria-hidden="true" tabindex="-1"></a><span class="co"># approprié de l&#39;interface R-Studio.</span></span>
+<span id="cb106-14"><a href="décrire.html#cb106-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># Package très utile pour la manipulation des données.</span></span>
+<span id="cb106-15"><a href="décrire.html#cb106-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-16"><a href="décrire.html#cb106-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Tableau croisé des notes moyennes selon le sexe</span></span>
+<span id="cb106-17"><a href="décrire.html#cb106-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="co"># Sélectionne l&#39;objet data puis ...</span></span>
+<span id="cb106-18"><a href="décrire.html#cb106-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexe) <span class="sc">%&gt;%</span> <span class="co"># Regroupe les données par la variable sexe puis...</span></span>
+<span id="cb106-19"><a href="décrire.html#cb106-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_each</span> (<span class="fu">funs</span>(mean) , <span class="at">notes_moy =</span> notes) <span class="co"># Donne la moyenne</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   sexe   notes_moy
+##   &lt;fct&gt;      &lt;dbl&gt;
+## 1 garçon      57.5
+## 2 fille       68.0</code></pre>
+<p>Ce tableau croisé nous montre que les garçons ont des notes moyennes de 57.5, alors que les filles ont une moyenne de 68.0. Donc, les filles ont en moyenne de meilleures notes que les garçons dans nos données. Ici, la variable <em>sexe</em> est dichotomique. Si elle est traitée comme étant numérique, elle ne peut avoir que la valeur de 0 (lorsqu’il s’agit d’un garçon) ou de 1 (lorsqu’il s’agit d’une fille). Il n’y a donc personne entre 0 et 1 sur cette variable.</p>
+<p>La plupart d’entre vous ont probablement une compréhension très intuitive de la signification du tableau croisé ci-haut. Il nous donne la moyenne des filles et des garçons. Je veux cependant vous démontrer que la régression linéaire peut nous offrir la même information. L’équation de base d’une régression linéaire simple peut s’écrire comme suit :
+<span class="math display">\[ y=a+\beta x \]</span>
+Où <em>a</em> est l’intercept (aussi souvent appelé la «constante») et <span class="math inline">\(\beta x\)</span> est le coefficient de régression associé à la variable <em>x</em>. L’intercept correspond à la valeur de notre variable dépendante <em>Y</em> quand toutes les autres variables de l’équation (ici seulement <em>x</em>) ont une valeur de 0. Une formulation plus précise pourrait aussi être écrite comme ceci :
+<span class="math display">\[ y_i=a+\beta x_i + e_i \]</span>
+Ici, nous disons simplement que la valeur sur <em>y</em> de l’individu <em>i</em> est une fonction de l’intercept <em>a</em>, de l’effet <span class="math inline">\(\beta\)</span> de la variable <em>x</em> qui varie selon l’individu <em>i</em>, et d’un terme d’erreur <em>e</em> spécifique à chaque individu <em>i</em>. Ce terme d’erreur est similaire à la distance d’un individu par rapport à la moyenne dont nous avons parlé plus tôt.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>Appliquons maintenant cette équation aux données.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="décrire.html#cb108-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(notes <span class="sc">~</span> sexe) <span class="co"># Crée l&#39;objet m1 qui contient les résultats d&#39;un</span></span>
+<span id="cb108-2"><a href="décrire.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co"># modèle linéaire (fonction lm() pour &quot;linear model&quot;) dans lequel </span></span>
+<span id="cb108-3"><a href="décrire.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co"># la variable note est une fonction (~) du sexe.</span></span>
+<span id="cb108-4"><a href="décrire.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1) <span class="co"># Pour voir les résultats dans l&#39;objet m1</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = notes ~ sexe)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -20.2474  -7.3035  -0.6993   6.0207  26.5525 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   57.528      1.441  39.933  &lt; 2e-16 ***
+## sexefille     10.508      1.925   5.458 3.63e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 9.556 on 98 degrees of freedom
+## Multiple R-squared:  0.2331, Adjusted R-squared:  0.2253 
+## F-statistic: 29.79 on 1 and 98 DF,  p-value: 3.627e-07</code></pre>
+<p>Nous voyons donc la valeur de l’intercept <em>a</em> est de 57.5282439 et que la valeur du coefficient <span class="math inline">\(\beta\)</span> associé à la variable dichotomique <em>sexe</em> est de 10.5077022. La variable sexe est dichotomique: dans nos données un individu est soit un garçon ou une fille. Il y a donc seulement deux options. En termes mathématiques, cela revient à accorder la valeur de 1 à l’une des possibilités et de 0 à l’autre. Dans notre cas, nous avons choisi d’accorder la valeur de 1 lorsque l’élève est une fille et de 0 lorsque c’est un garçon. Nous aurions aussi pu faire l’inverse. Les résultats de la régression auraient été les mêmes, mais le coefficient de 10.5077022 aurait simplement été négatif plutôt que positif («les garçons ont de moins bonnes notes que les filles», plutôt que «les filles ont de meilleures notes que les garçons»).</p>
+<p>Nous pourrions aussi visualiser les données.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="décrire.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sexe, notes, <span class="at">main=</span><span class="st">&quot;Notes en fonction du sexe&quot;</span>, </span>
+<span id="cb110-2"><a href="décrire.html#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab=</span><span class="st">&quot;Sexe&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Notes&quot;</span>, <span class="at">data=</span>data)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+Ici, R traite la variable <em>sexe</em> comme un facteur, c’est-à-dire comme une variable qui distingue différents états qui n’ont pas d’ordonnancement numérique. Pour cette raison, la fonction <em>plot()</em> nous donne automatiquement un diagramme en boîte à moustache (c’est le nom!) puisque cela fait plus de sens pour des variables dichotomiques qui marquent des états distincts. Il demeure que cette variable est mathématiquement traitée comme si fille=1 et garçon = 0. Voyons ce qu’une telle figure donnerait si R «pense» que la variable est numérique.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="décrire.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># La variable fille est utilisée ici plutôt que sexe parce que cette </span></span>
+<span id="cb111-2"><a href="décrire.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable est enregistrée dans R comme une variable de format numérique.</span></span>
+<span id="cb111-3"><a href="décrire.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co"># R la traite donc comme telle. Cependant, gardez bien à l&#39;esprit que </span></span>
+<span id="cb111-4"><a href="décrire.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cela revient mathématiquement au même. </span></span>
+<span id="cb111-5"><a href="décrire.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fille, notes, <span class="at">main=</span><span class="st">&quot;Notes en fonction du sexe&quot;</span>, </span>
+<span id="cb111-6"><a href="décrire.html#cb111-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab=</span><span class="st">&quot;Sexe (garçon = 0, fille = 1)&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Notes&quot;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">data=</span>data,</span>
+<span id="cb111-7"><a href="décrire.html#cb111-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(m1))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+Chaque point est un individu. S’il s’agit d’un garçon, le point est à gauche (à 0) sur l’axe des x, alors qu’il est à droite (à 1) s’il s’agit d’une fille. Il n’y a personne au milieu puisqu’un élève est soit un garçon, soit une fille (raison pour laquelle cette variable est normalement traitée comme un facteur). La hauteur du point nous indique la note obtenue par l’élève. La ligne est l’équation de régression. La distance entre chaque point individuel et la ligne est l’erreur <span class="math inline">\(e_i\)</span>, c’est-à-dire ce qui n’est pas décrit parfaitement par notre équation (la ligne). Nous appelons aussi souvent cette erreur les «résidus».</p>
+<p>L’intercept <em>a</em> est la valeur moyenne de notre variable dépendante lorsque notre variable dépendante <em>sexe</em> = 0. Autrement dit, <em>a</em> est ici la note moyenne des garçons, soit 57.5282439. La valeur du coefficient de régression <span class="math inline">\(\beta\)</span> (prononcé beta) nous indique le mouvement moyen de notre variable dépendante <em>y</em> lorsque notre variable dépendante <em>x</em> augmente de 1 unité. Dans le cas qui nous occupe, «augmenter» de 1 unité signifie être une fille plutôt qu’un garçon. Vous voyez donc que même si <span class="math inline">\(1&gt;0\)</span> alors que les filles ne peuvent pas être considérées «plus» que les garçons, cela ne fait pas réellement de différence mathématiquement puisqu’une unité peut ici être interprétée comme distinguant ces états qui n’ont pas d’ordonnancement hiérarchique. <em>Cela n’est cependant vrai que pour les variables dichotomiques</em>, qui sont un cas particulier des <em>variables nominales</em><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Ainsi, dans le cas qui nous occupe, notre modèle prévoit que la note moyenne des filles sera de <span class="math inline">\(a+\beta x\)</span>, soit de 57.5282439 + 10.5077022= 68.0359461.</p>
+<p>Rappelons-nous quelles étaient les moyennes des garçons et des filles dans notre tableau croisé :</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="décrire.html#cb112-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb112-2"><a href="décrire.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexe) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-3"><a href="décrire.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_each</span> (<span class="fu">funs</span>(mean) , <span class="at">notes_moy =</span> notes)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   sexe   notes_moy
+##   &lt;fct&gt;      &lt;dbl&gt;
+## 1 garçon      57.5
+## 2 fille       68.0</code></pre>
+<p>Nous constatons que les chiffres sont très exactement les mêmes. La valeur de l’intercept <em>a</em> est égal à la moyenne des garçons ( c’est-à-dire quand le sexe = 0), alors que <span class="math inline">\(a+\beta x\)</span> est égal à la moyenne des filles. Inversement, nous pourrions aussi dire que dans ce cas, la valeur du <span class="math inline">\(\beta\)</span> est tout simplement la différence de moyenne entre les garçons et les filles, soit 68.03595 - 57.52824 = 10.50771. Vous voyez donc que notre modèle de régression n’a rien de magique, il <em>décrit</em> tout simplement nos données.</p>
+<p>Vous comprendez aussi que lorsque nous proposons l’équation <span class="math inline">\(y_i=a+\beta x_i + e_i\)</span>, ne sommes absolument pas en train de dire que les notes des élèves de notre cours de pétanque obéissent à une sorte de loi immuable de l’univers. Nous disons simplement que les notes de nos élèves varient autour d’une certaine valeur <span class="math inline">\(a\)</span> et qu’elles ont tendance à être différentes (une différence moyenne de valeur <span class="math inline">\(\beta\)</span>) en fonction du sexe des élèves. Nous ne savons pas si le sexe des élèves est la <em>cause</em> de la variation des notes, mais nous constatons tout simplement que, dans nos données, les filles ont tendance à avoir de meilleures notes que les garçons. Plutôt que de décrire les données en donnant la moyenne des garçons et des filles séparément (décrire les données avec deux chiffres, les moyennes par groupe), nous avons simplement proposé une équation qui est équivalente.</p>
+</div>
+</div>
+<div id="la-régression-linéaire-simple-avec-une-variable-continue" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> La régression linéaire simple avec une variable continue<a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-continue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Jusqu’ici, notre variable dépendante a été dichotomique (garçon = 0, fille =1). Un coefficient de régression nous donne le mouvement dans la variable dépendante associée <em>au mouvement d’une unité de la variable indépendante</em>. Les coefficients des variables dichotomiques sont plus «faciles» à interpréter puisqu’ils s’interprètent tout simplement comme le fait d’être dans un groupe plutôt que dans l’autre, ou la différence entre les deux groupes. Cependant, nous utilisons aussi régulièrement des variables continues, donc des variables dont les valeurs <em>sont ordonnancées hiérarchiquement</em> et dont <em>l’unité de mesure peut être considérée comme standard</em>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> Faisons donc un modèle similaire, mais en utilisant cette fois le nombre d’heures d’étude de nos élèves.</p>
+<p>Commençons par visualiser de quoi ont l’air les données en fonction du nombre d’heures étudiées par semaine.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="décrire.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(heures.etude, notes, <span class="at">main=</span><span class="st">&quot;Notes en fonction des heures étudiées&quot;</span>,</span>
+<span id="cb114-2"><a href="décrire.html#cb114-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
+<span id="cb114-3"><a href="décrire.html#cb114-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab=</span><span class="st">&quot;Heures d&#39;étude&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Notes&quot;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">data=</span>data)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Visuellement, il est assez clair que ceux qui étudient davantage ont de meilleures notes. De manière analogue à ce que nous faisons lorsque nous calculons une moyenne pour synthétiser une vaste quantité d’information, nous pourrions ici vouloir résumer le plus succinctement possible ce que nous observons chez ces 100 élèves. Bien entendu, chaque individu est intéressant, mais nous nous intéressons ici aux notes moyennes des élèves en fonction des heures d’étude. C’est précisément ce que calcule la régression linéaire.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="décrire.html#cb115-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(notes<span class="sc">~</span>heures.etude) <span class="co"># Crée l&#39;objet m2 qui contient les résultats</span></span>
+<span id="cb115-2"><a href="décrire.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="co"># d&#39;un modèle linéaire (fonction lm() pour &quot;linear model&quot;) dans lequel </span></span>
+<span id="cb115-3"><a href="décrire.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co"># la variable note est une fonction (~) de la variable heure.etude. </span></span>
+<span id="cb115-4"><a href="décrire.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2) <span class="co"># Pour voir les résultats contenus dans l&#39;objet m2.</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = notes ~ heures.etude)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16.3271  -3.7251  -0.6483   4.1989  16.8874 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    36.981      1.957   18.90   &lt;2e-16 ***
+## heures.etude    5.030      0.353   14.25   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.227 on 98 degrees of freedom
+## Multiple R-squared:  0.6744, Adjusted R-squared:  0.6711 
+## F-statistic:   203 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Les résultats de notre modèle nous indiquent que chaque heure d’étude supplémentaire est <em>en moyenne</em> associée à des notes plus élevées de 5.0295675. Un élève qui n’a pas étudié obtient donc, en moyenne, la valeur de l’intercept <em>a</em>, soit de 36.9810477. Un élève qui a étudié 1 heure obtient en moyenne <span class="math inline">\(a + \beta \times 1\)</span>, soit 36.9810477 + 5.0295675 = 42.0106152. Un élève qui a étudié 2 heures obtient en moyenne <span class="math inline">\(a + \beta \times 2\)</span>, soit 36.9810477 + 5.0295675 X 2 = 47.0401827. Un élève qui a étudié 8 heures obtient en moyenne <span class="math inline">\(a + \beta \times 8\)</span>, soit 36.9810477 + 5.0295675 X 8 = 77.2175877.</p>
+<p>Voici notre ligne de régression par rapport à nos points. Si vous observez où passe cette ligne, vous constaterez qu’elle est directement sur les «valeurs prédites» que nous avons calculées au paragraphe précédent.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="décrire.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(heures.etude, notes, <span class="at">main=</span><span class="st">&quot;Notes en fonction des heures étudiées&quot;</span>,</span>
+<span id="cb117-2"><a href="décrire.html#cb117-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
+<span id="cb117-3"><a href="décrire.html#cb117-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab=</span><span class="st">&quot;Heures d&#39;étude&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Notes&quot;</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">data=</span>data,</span>
+<span id="cb117-4"><a href="décrire.html#cb117-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="fu">lm</span>(notes<span class="sc">~</span>heures.etude)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Tout comme une moyenne résume en un seul chiffre la valeur centrale d’une variable, l’équation de régression linéaire résume en quelques coefficients la relation entre deux ou plusieurs variables. Cette équation correspond tout simplement à une ligne que l’on trace au milieu des points. Encore une fois, l’équation ne signifie absolument pas que le phénomène qui nous intéresse obéit à une loi immuable de l’univers. L’équation ne fait que <em>résumer</em> et <em>décrire</em> ce que nous observons dans les données.</p>
+<p>La ligne de régression est calculée de manière à <em>minimiser</em> la <em>somme des erreurs au carré</em>. La somme des erreurs au carré réfère à la somme totale des <em>résidus</em>, soit la distance de chaque point par rapport à la ligne de régression. Cette distance est ensuite mise au carré. Puis, nous faisons la même chose pour tous les points et nous additionnons ces distances pour obtenir la <em>somme des erreurs au carré</em>. Le fait que la régression linéaire minimise cette somme est importante parce que cela veut dire qu’il n’existe pas de meilleure ligne qui puisse décrire ces données. Il n’y a pas de meilleure ligne parce que c’est celle qui est le plus près possible de tous les points à la fois. Vous vous rappelez peut-être que nous disions plus haut que la moyenne a une propriété similaire : une moyenne minimise la somme des <em>écarts à la moyenne au carré</em>. Le principe est ici le même.</p>
+<p>Évidemment, l’équation de régression ne décrit pas parfaitement la relation, il y a des points qui ne sont pas directement sur la ligne (il y a des «résidus», des écarts entre chaque point et la ligne), mais souvenez-vous qu’il en était de même pour la moyenne d’un groupe et chaque individu. La régression résume la relation entre nos deux variables de manière à ce que nous soyons capables de manipuler cette information. Encore une fois, il n’y a rien de magique à cela, nous ne faisons que <em>décrire</em> nos données à l’aide d’une équation. J’espère qu’au passage vous commencez à arrêter de faire de l’angoisse devant les équations!</p>
+</div>
+<div id="la-régression-linéaire-avec-plusieurs-variables-indépendantes" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> La régression linéaire avec plusieurs variables indépendantes<a href="décrire.html#la-régression-linéaire-avec-plusieurs-variables-indépendantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Jusqu’à présent, nous n’avons utilisé qu’une seule variable indépendante à la fois. Nous avons vu qu’une régression linéaire avec une variable dichotomique comme prédicteur nous permettait facilement de retrouver les moyennes de nos deux groupes (garçons et filles). Nous avons aussi vu comment une régression similaire qui utilise une variable continue comme prédicteur nous permet aussi de résumer simplement le lien entre une unité de ce prédicteur et la variable dépendante. Nous pourrions cependant nous intéresser au lien spécifique d’une, mais variable en tenant compte d’une ou de plusieurs autres variables. C’est ce que permet la régression multiple.</p>
+<p>Cela est important parce que, si par exemple les filles ont tendance à étudier plus d’heures que les garçons et que le nombre d’heures passées à étudier est lié aux notes obtenues, on peut alors se demander si c’est réellement le fait d’être une fille qui fait en sorte qu’elles ont de meilleures notes, ou si cela est simplement lié au fait qu’elles étudient plus. Le problème que nous nous posons ici est similaire à l’exemple de l’ampleur des dégâts lors d’un incendie, du nombre de pompiers qui le combattent et de l’intensité d’un incendie donné plus haut. Nous nous demandons si la relation entre l’une ou autre de nos variables d’intérêts est réelle ou fallacieuse.</p>
+<p>Voyons dans nos données le nombre d’heures d’étude en fonction du sexe.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="décrire.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tableau croisé des heures d&#39;étude moyennes selon le sexe</span></span>
+<span id="cb118-2"><a href="décrire.html#cb118-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb118-3"><a href="décrire.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexe) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-4"><a href="décrire.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_each</span> (<span class="fu">funs</span>(mean) , <span class="at">h.etude_moy =</span> heures.etude)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   sexe   h.etude_moy
+##   &lt;fct&gt;        &lt;dbl&gt;
+## 1 garçon        4.36
+## 2 fille         5.96</code></pre>
+<p>Nous voyons dans nos données que les filles étudient davantage. Les garçons étudient en moyenne 4.36 heures alors que les filles étudient 5.95 heures. Ainsi, on pourra se demander si, dépendamment du nombre d’heures étudiées, les filles obtiennent quand même de meilleurs résultats. Entre d’autres mots, nous pouvons nous demander si une fille qui a étudié 5 heures a en moyenne la même note qu’un garçon qui a étudié lui aussi 5 heures, ou si elle a quand même une meilleure note du simple fait d’être une fille. Pour répondre à cette question, nous allons estimer l’équation de régression linéaire suivante :
+<span class="math display">\[ Y =  a + \beta_1X_1 + \beta_2X_2 + e  \]</span>
+Ici, <em>a</em> est encore une fois l’intercept, <span class="math inline">\(\beta_1\)</span> est le coefficient de régression de la variable dichotomique <em>sexe</em>, <span class="math inline">\(\beta_2\)</span> est le coefficient de régression de la variable continue _heures.etude et <span class="math inline">\(e\)</span> est le terme d’erreur individuel, ou ce qui n’est pas expliqué par nos autres variables. Pour aider le lecteur, on pourrait écrire l’équation comme suit :
+<span class="math display">\[ Y =  a + \beta_1 sexe + \beta_2 heure.etude + e  \]</span>
+<span class="math inline">\(\beta_1\)</span> et <span class="math inline">\(\beta_2\)</span> sont indicés de 1 et 2 pour bien les distinguer, mais les autres variables ne sont pas indicées de <em>i</em> tout simplement parce que l’indice est sous-entendu et ne porte pas à confusion. Il est évident que le sexe et les heures d’étude varient entre les individus.</p>
+<p>Estimons maintenant cette équation dans R.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="décrire.html#cb120-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(notes <span class="sc">~</span> sexe <span class="sc">+</span> heures.etude) <span class="co"># Créer l&#39;objet m1 qui contient</span></span>
+<span id="cb120-2"><a href="décrire.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># les résultats # d&#39;un modèle linéaire (fonction lm() pour &quot;linear model&quot;)</span></span>
+<span id="cb120-3"><a href="décrire.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dans lequel la variable note est une fonction (~) du sexe </span></span>
+<span id="cb120-4"><a href="décrire.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ET de heure.etude.</span></span>
+<span id="cb120-5"><a href="décrire.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = notes ~ sexe + heures.etude)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13.6705  -4.2615  -0.6981   3.9705  16.0712 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   37.3057     1.9227  19.403   &lt;2e-16 ***
+## sexefille      3.1023     1.3758   2.255   0.0264 *  
+## heures.etude   4.6372     0.3872  11.977   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.101 on 97 degrees of freedom
+## Multiple R-squared:  0.6906, Adjusted R-squared:  0.6843 
+## F-statistic: 108.3 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Nos résultats nous indiquent donc qu’indépendamment du nombre d’heures d’étude, les filles ont en moyenne des notes de 3.1023461 points supérieurs aux garçons. Par ailleurs, en tenant compte de la différence entre les garçons et les filles, chaque heure d’étude supplémentaire apporte en moyenne 4.6372014 points de plus.
+À partir de ces résultats, il est possible d’estimer la note d’un garçon qui a étudié 5 heures en complétant simplement notre équation :
+<span class="math display">\[Y =  a + \beta_1 sexe + \beta_2 heure.etude\]</span>
+<span class="math display">\[Y =  37.3057061 + 3.1023461 sexe + 4.6372014 heure.etude\]</span>
+<span class="math display">\[Y =  37.3057061 + 3.1023461 \times 0 + 4.6372014 \times 5\]</span>
+En résolvant l’équation, on arrive à 60.4917131. Si au lieu d’un garçon on s’intéressait à la note moyenne d’une fille qui a elle aussi étudié 5 heures, il suffit encore de résoudre l’équation en ajustant les chiffres.
+<span class="math display">\[Y =  37.3057061 + 3.1023461 \times 1 + 4.6372014 \times 5\]</span>
+Nous obtenons alors 63.5940592. La différence entre le garçon et la fille qui ont étudié le même nombre d’heures (63.5940592 -60.4917131 = 3.1023461) équivaut alors précisément à notre coefficient <span class="math inline">\(\beta_1\)</span> de 3.1023461.</p>
+<p>Il peut être difficile de visualiser des résultats de régression multiple sur une surface en deux dimensions. Nous pourrions faire un graphique en trois dimensions, mais la surface sur laquelle il est projeté (du papier ou un écran) demeure bidimensionnelle. La meilleure manière de s’y prendre est d’ajouter de la couleur.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="décrire.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># charger ggplot2, super package pour les graphiques</span></span>
+<span id="cb122-2"><a href="décrire.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notez que le package ggplot2 permet l&#39;ajout d&#39;un +</span></span>
+<span id="cb122-3"><a href="décrire.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># en fin de ligne pour lui dire qu&#39;une autre ligne ajoutant des </span></span>
+<span id="cb122-4"><a href="décrire.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="co"># éléments à la figure suit. Un + n&#39;est pas nécessaire si </span></span>
+<span id="cb122-5"><a href="décrire.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># une parenthèse est déjà ouverte et n&#39;a pas encore été fermée.</span></span>
+<span id="cb122-6"><a href="décrire.html#cb122-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-7"><a href="décrire.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Notez aussi comment la syntaxe est écrite. Les indentations n&#39;ont aucun</span></span>
+<span id="cb122-8"><a href="décrire.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="co"># effet sur le résultat, mais ils améliorent la lisibilité. Il est </span></span>
+<span id="cb122-9"><a href="décrire.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="co"># beaucoup plus facile de lire une longue parenthèse dans une </span></span>
+<span id="cb122-10"><a href="décrire.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="co"># syntaxe lorsque celle-ci est indentée à partir de la première</span></span>
+<span id="cb122-11"><a href="décrire.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="co"># parenthèse. Voir après «theme(». Toutes les options dans cette</span></span>
+<span id="cb122-12"><a href="décrire.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="co"># parenthèse sont indentées sous celle-ci. Cela est simplement une </span></span>
+<span id="cb122-13"><a href="décrire.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="co"># question de lisibilité. Le tout pourrait être écrit en une seule ligne</span></span>
+<span id="cb122-14"><a href="décrire.html#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="co"># interminable (et difficile à lire). Mieux vaut l&#39;écrire en plusieurs</span></span>
+<span id="cb122-15"><a href="décrire.html#cb122-15" aria-hidden="true" tabindex="-1"></a><span class="co"># lignes. </span></span>
+<span id="cb122-16"><a href="décrire.html#cb122-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(heures.etude, notes, <span class="at">colour=</span>sexe)) <span class="sc">+</span> </span>
+<span id="cb122-17"><a href="décrire.html#cb122-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Notes des élèves en fonction du sexe et des heures étudiées&quot;</span>) <span class="sc">+</span></span>
+<span id="cb122-18"><a href="décrire.html#cb122-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb122-19"><a href="décrire.html#cb122-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">30</span>, <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb122-20"><a href="décrire.html#cb122-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Notes&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-21"><a href="décrire.html#cb122-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Heures d&#39;étude&quot;</span>) <span class="sc">+</span></span>
+<span id="cb122-22"><a href="décrire.html#cb122-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">fullrange=</span><span class="cn">TRUE</span>) <span class="sc">+</span> <span class="co"># lignes de régression</span></span>
+<span id="cb122-23"><a href="décrire.html#cb122-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># les points individuels</span></span>
+<span id="cb122-24"><a href="décrire.html#cb122-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="co"># Ce qui suit est esthétique</span></span>
+<span id="cb122-25"><a href="décrire.html#cb122-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb122-26"><a href="décrire.html#cb122-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb122-27"><a href="décrire.html#cb122-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb122-28"><a href="décrire.html#cb122-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb122-29"><a href="décrire.html#cb122-29" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">size=</span><span class="fl">0.3</span>, <span class="at">linetype=</span><span class="st">&quot;solid&quot;</span>)</span>
+<span id="cb122-30"><a href="décrire.html#cb122-30" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p>Nous voyons dans cette figure le résultat de notre régression. Le bleu correspond aux filles et le rouge aux garçons. Nous voyons que leurs droites de régression ont la même pente (<span class="math inline">\(\beta_2\)</span>) et augmentent de 4.6372014 pour chaque heure d’étude supplémentaire. Cependant, la droite des filles est plus élevée de 3.1023461 par rapport à celle des garçons (<span class="math inline">\(\beta_1\)</span>) qui débute à l’intercept <em>a</em>, soit à 37.3057061. En observant les points bleus, nous voyons qu’il n’y a aucune fille dans nos données qui a étudié 0 heure (en fait, aucune fille n’a étudié moins de 3 heures), mais nos résultats nous permettent <em>d’estimer</em> la note éventuelle d’une fille qui n’aurait pas étudié. Encore une fois, on trouverait cette valeur précise en résolvant notre équation de régression :</p>
+<p><span class="math display">\[Y =  37.3057061 + 3.1023461 \times 1 + 4.6372014 \times 0\]</span>
+Puisque les heures étudiées sont de 0 (4.6372014 X 0 = 0), cela se simplifie en :
+<span class="math display">\[Y =  37.3057061 + 3.1023461 \times 1\]</span>
+Ce qui nous donne 37.3057061. Évidemment, il faut être prudent lorsque nous prédisons de la sorte des valeurs en dehors de nos données, mais l’objectif est ici de vous montrer la logique.</p>
+</div>
+<div id="la-régression-linéaire-un-exemple-avec-des-données-réelles" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> La régression linéaire, un exemple avec des données réelles<a href="décrire.html#la-régression-linéaire-un-exemple-avec-des-données-réelles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nous avons jusqu’ici utilisé des données fictives que nous avons nous-mêmes créées afin de mieux comprendre l’outil de la régression. Cependant, dans la vraie vie nous utilisons évidemment des «vraies» données. Nous allons ici voir comment une analyse de régression linéaire se fait «dans la vraie vie». Ce faisant, nous verrons qu’il faut préalablement «nettoyer» un peu les données en recodant convenablement les variables avant de procéder. J’utiliserai ici les données des <a href="https://ces-eec.arts.ubc.ca/french-section/enquetes/"><em>Études électorales canadiennes</em></a> de 2015. Ces données sont produites lors de chaque élection fédérale et elles sont rendues disponibles gratuitement sur le site internet de l’étude.</p>
+<p>Comme nous l’avons fait plus haut, chargeons maintenant ces données.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="décrire.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls())</span></span>
+<span id="cb123-2"><a href="décrire.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="décrire.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour charger des données du format Stata, nous avons besoin du package </span></span>
+<span id="cb123-4"><a href="décrire.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;readstata13&quot; qui inclut les fonctions de transformation nécessaires. </span></span>
+<span id="cb123-5"><a href="décrire.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readstata13)</span></span>
+<span id="cb123-6"><a href="décrire.html#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-7"><a href="décrire.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargeons les données.</span></span>
+<span id="cb123-8"><a href="décrire.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co">#ces15 &lt;- read.dta13(&quot;CES2015-phone-release/CES2015_CPS-PES-MBS_complete-v2.dta&quot;)</span></span>
+<span id="cb123-9"><a href="décrire.html#cb123-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-10"><a href="décrire.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb123-11"><a href="décrire.html#cb123-11" aria-hidden="true" tabindex="-1"></a>ces15 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">&quot;data/CES2015_CPS-PES-MBS_complete-v2.sav&quot;</span>)</span></code></pre></div>
+<p>Nous nous intéresserons à l’appréciation de Justin Trudeau et nous utiliserons ce que nous appelons sa «mesure thermométrique». Nous demandons simplement aux répondants de dire, sur une échelle de 0 à 100 où 0 veut dire qu’ils ne l’aiment pas du tout et 100 veut dire qu’ils l’aiment beaucoup. La question est formulée comme suit:</p>
+<p>« Maintenant les chefs de partis. Utiliser la même échelle, où zéro veut dire que vous N’AIMEZ VRAIMENT PAS DU TOUT un chef, et cent veut dire que vous L’AIMEZ VRAIMENT BEAUCOUP.</p>
+<p>Que pensez_vous de JUSTIN TRUDEAU?»</p>
+<p>Dans les données, cette variable est nommée «CPS15_24», qui est un titre très informatif… Voyons voir de quoi la variable a l’air.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="décrire.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ces15<span class="sc">$</span>CPS15_24)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##       0      35      60     109      75     999      20</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="décrire.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Faire un histograme</span></span>
+<span id="cb126-2"><a href="décrire.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ces15<span class="sc">$</span>CPS15_24)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>On remarque que pour une variable qui est censée aller de 0 à 100, nous avons des valeurs étrangement élevées. Cela arrive fréquemment. Un coup d’oeil à la documentation fournie avec les données nous indique que les «Ne sais pas» ont été codés 998, et les «Refus» ont été codés 999. R assume que ces réponses sont «valables» et il faut donc nettoyer cette variable en codant ces réponses de manières appropriées. Ici, nous traiterons ces réponses comme des valeurs manquantes, qui sont codées dans R par «NA».</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="décrire.html#cb127-1" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>thermo.trudeau <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ces15<span class="sc">$</span>CPS15_24) <span class="co"># Créé la variable </span></span>
+<span id="cb127-2"><a href="décrire.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;thermo.truceau&quot; dans la matrice ces15 en copiant le contenu </span></span>
+<span id="cb127-3"><a href="décrire.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co"># de la variable CPS15_24 dans la matrice data.ces</span></span>
+<span id="cb127-4"><a href="décrire.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># J&#39;ai ici utilisé l&#39;option as.numeric() parce que CPS15_24 était</span></span>
+<span id="cb127-5"><a href="décrire.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co"># encodé dans un format &quot;labelled&quot; et nous préférons ici avoir </span></span>
+<span id="cb127-6"><a href="décrire.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co"># simplement les valeurs numériques. </span></span>
+<span id="cb127-7"><a href="décrire.html#cb127-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-8"><a href="décrire.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Recoder les valeurs de la variable thermo.trudeau pour que ce qui </span></span>
+<span id="cb127-9"><a href="décrire.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co"># est plus grand que 100 soit transormé en valeur manquante.</span></span>
+<span id="cb127-10"><a href="décrire.html#cb127-10" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>thermo.trudeau[ces15<span class="sc">$</span>thermo.trudeau <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb127-11"><a href="décrire.html#cb127-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-12"><a href="décrire.html#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Faire un histogramme et préciser les titres</span></span>
+<span id="cb127-13"><a href="décrire.html#cb127-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ces15<span class="sc">$</span>thermo.trudeau,</span>
+<span id="cb127-14"><a href="décrire.html#cb127-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Themomètre sur l&#39;appéciation de Justin Trudeau&quot;</span>,</span>
+<span id="cb127-15"><a href="décrire.html#cb127-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Score thermométrique&quot;</span>,</span>
+<span id="cb127-16"><a href="décrire.html#cb127-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Fréquence&quot;</span></span>
+<span id="cb127-17"><a href="décrire.html#cb127-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="décrire.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On aurait pu faire la même chose sans placer la nouvelle variable</span></span>
+<span id="cb128-2"><a href="décrire.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># thermo.trudeau dans la matrice de données initiale ces15. </span></span>
+<span id="cb128-3"><a href="décrire.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co"># thermo.trudeau serait alors un nouvel objet en lui-même. Comme ceci:</span></span>
+<span id="cb128-4"><a href="décrire.html#cb128-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-5"><a href="décrire.html#cb128-5" aria-hidden="true" tabindex="-1"></a>thermo.trudeau <span class="ot">&lt;-</span> ces15<span class="sc">$</span>CPS15_24</span>
+<span id="cb128-6"><a href="décrire.html#cb128-6" aria-hidden="true" tabindex="-1"></a>thermo.trudeau[thermo.trudeau <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb128-7"><a href="décrire.html#cb128-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-8"><a href="décrire.html#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Cependant, il vaut souvent mieux garder les variables à l&#39;intérieur</span></span>
+<span id="cb128-9"><a href="décrire.html#cb128-9" aria-hidden="true" tabindex="-1"></a><span class="co"># de matrices pour garder de l&#39;ordre dans notre session. Éliminons </span></span>
+<span id="cb128-10"><a href="décrire.html#cb128-10" aria-hidden="true" tabindex="-1"></a><span class="co"># donc l&#39;objet &quot;thermo.trudeau&quot; seul, et utilisons sa copie située dans</span></span>
+<span id="cb128-11"><a href="décrire.html#cb128-11" aria-hidden="true" tabindex="-1"></a><span class="co"># la matrice ces15</span></span>
+<span id="cb128-12"><a href="décrire.html#cb128-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-13"><a href="décrire.html#cb128-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(thermo.trudeau)</span></code></pre></div>
+<p>Imaginons maintenant que nous nous intéressions à la perception de Trudeau chez les répondants en fonction de leur niveau d’éducation. La variable d’éducation dans les données est nommée «CPS15_79», encore une fois un nom très utile…</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="décrire.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>CPS15_79)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5    6    7    8    9   10   11   98   99 
+##    5   30   65  321  765  233  930  285 1007  360  165   11   25</code></pre>
+<p>Encore une fois, cette variable a des codes étranges (98 et 99). Un coup d’oeil à la documentation nous informe sur comment cette variable a été codée:</p>
+<p>Quel est le plus haut niveau d’éducation que vous avez complété?<br />
+1 aucune scolarité
+2 quelques années à l’élémentaire<br />
+3 école élémentaire terminée
+4 quelques années d’école secondaire
+5 école secondaire terminée<br />
+6 quelques études au collège, au cégep, au collège classique
+7 études terminées au collège, au cégep, au collège classique<br />
+8 quelques études universitaires<br />
+9 baccalauréat<br />
+10 maîtrise<br />
+11 diplôme professionnel ou doctorat
+98 Ne sais pas
+99 Refus</p>
+<p>Nous devons donc encore une fois «nettoyer» cette variable, minimalement en recodeant les 98 et 99 en tant que valeurs manquantes.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="décrire.html#cb131-1" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ <span class="ot">&lt;-</span> ces15<span class="sc">$</span>CPS15_79 <span class="co"># Je créé encore une fois une nouvelle variable</span></span>
+<span id="cb131-2"><a href="décrire.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;educ&quot; dans l&#39;objet ces15qui est une copie de CPS15_79. Elle aura un nom</span></span>
+<span id="cb131-3"><a href="décrire.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plus informatif</span></span>
+<span id="cb131-4"><a href="décrire.html#cb131-4" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ[ces15<span class="sc">$</span>educ <span class="sc">&gt;</span> <span class="dv">11</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># Change les valeurs plus grandes que 11 pour NA</span></span>
+<span id="cb131-5"><a href="décrire.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>educ)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5    6    7    8    9   10   11 
+##    5   30   65  321  765  233  930  285 1007  360  165</code></pre>
+<p>Nous pourrions maintenant vouloir une variable d’éducation qui regroupe certains niveaux d’études. Nous pourrions vouloir avoir quatre niveaux d’éducation plutôt que 11.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="décrire.html#cb133-1" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp <span class="ot">&lt;-</span> ces15<span class="sc">$</span>educ <span class="co"># Copie la variable &quot;educ&quot; dans la nouvelle </span></span>
+<span id="cb133-2"><a href="décrire.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable &quot;educ.gp&quot;</span></span>
+<span id="cb133-3"><a href="décrire.html#cb133-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-4"><a href="décrire.html#cb133-4" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ces15<span class="sc">$</span>educ.gp) <span class="co"># Transfoirme en numérique pour éliminer les éléments liés à SPSS</span></span>
+<span id="cb133-5"><a href="décrire.html#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="décrire.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Créé les différentes catégories</span></span>
+<span id="cb133-7"><a href="décrire.html#cb133-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-8"><a href="décrire.html#cb133-8" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp[ces15<span class="sc">$</span>educ.gp <span class="sc">&lt;</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Moins que secondaire&quot;</span></span>
+<span id="cb133-9"><a href="décrire.html#cb133-9" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp[ces15<span class="sc">$</span>educ.gp <span class="sc">==</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Secondaire complété&quot;</span></span>
+<span id="cb133-10"><a href="décrire.html#cb133-10" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp[ces15<span class="sc">$</span>educ.gp <span class="sc">&gt;</span> <span class="dv">5</span> <span class="sc">&amp;</span> ces15<span class="sc">$</span>educ.gp <span class="sc">&lt;=</span> <span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Post-secondaire&quot;</span></span>
+<span id="cb133-11"><a href="décrire.html#cb133-11" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp[ces15<span class="sc">$</span>educ.gp <span class="sc">&gt;</span> <span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Diplôme universitaire&quot;</span></span>
+<span id="cb133-12"><a href="décrire.html#cb133-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-13"><a href="décrire.html#cb133-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-14"><a href="décrire.html#cb133-14" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>educ.gp)</span></code></pre></div>
+<pre><code>## 
+##                    10                    11 Diplôme universitaire 
+##                   360                   165                  3641</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="décrire.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On voit que R ordonnance les catégories par ordre alphabétique. </span></span>
+<span id="cb135-2"><a href="décrire.html#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-3"><a href="décrire.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Cependant, nous pouvons aussi voir que la variable est encore une </span></span>
+<span id="cb135-4"><a href="décrire.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co"># de de classe &quot;labelled&quot; et cela posera problème plus tard. </span></span>
+<span id="cb135-5"><a href="décrire.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ces15<span class="sc">$</span>educ.gp)</span></code></pre></div>
+<pre><code>##    Length     Class      Mode 
+##      4202 character character</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="décrire.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nous préférons avoir une variable de classe facteur. </span></span>
+<span id="cb137-2"><a href="décrire.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Je la modifie donc d&#39;abord. </span></span>
+<span id="cb137-3"><a href="décrire.html#cb137-3" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ces15<span class="sc">$</span>educ.gp)</span>
+<span id="cb137-4"><a href="décrire.html#cb137-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-5"><a href="décrire.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Si on veut les replacer en ordre &quot;logique&quot; de niveau d&#39;étude</span></span>
+<span id="cb137-6"><a href="décrire.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="co"># on fait ceci:</span></span>
+<span id="cb137-7"><a href="décrire.html#cb137-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-8"><a href="décrire.html#cb137-8" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>educ.gp <span class="ot">&lt;-</span> <span class="fu">factor</span>(ces15<span class="sc">$</span>educ.gp,<span class="fu">levels</span>(ces15<span class="sc">$</span>educ.gp)[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>)])</span>
+<span id="cb137-9"><a href="décrire.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>educ.gp)</span></code></pre></div>
+<pre><code>## 
+##                    11 Diplôme universitaire                    10 
+##                   165                  3641                   360</code></pre>
+<p>Finalement, nous pourrions aussi vouloir tenir compte du sexe des répondants. Comme nous l’avons vu plus haut, la variable est RGENDER, que nous avons déjà «nottoyé» plus haut comme suit :</p>
+<p>L’intercept correspond ici au score moyen donné par les individus qui ont un score de 0 sur les deux variables indépendantes. Avoir un score de 0 sur la variable sexe signifie qu’on est un homme, mais notez qu’il n’est pas possible d’avoir un score de 0 sur la variable d’éducation que nous avons utilisé ici, puisque celle-ci va de 0 à 11. Il arrive fréquemment que l’intercept ne correspondent à rien de possible et cela n’a pas réellement de conséquence mathématiquement parlant. Il faut simplement faire plus attention lorsque l’on interprète les résultats.</p>
+<p>Cela illustre aussi qu’il faut bien réfléchir à comment on code nos variables. Nous aurions pu ici décider de coder notre variable d’éducation pour qu’elle varie entre 0 et 10 (plutôt que 1 à 11) et alors la valeur de 0 sur cette variable (et donc l’intercept) aurait pu correspondre à des cas réels dans les données. Encore une fois, ce codage n’a pas de conséquence autre que la facilité avec laquelle on peut interpréter les résultats. Les résultats ne sont pas soudainement «faux» ou «mauvais» pour autant, ils sont simplement moins intuitifs à interpréter. J’espère aussi que vous voyez pourquoi il vaut souvent mieux coder les variables pour que 0 soit possible.</p>
+<p>Vous avez certainement remarqué que R nous donne aussi plusieurs informations quant à l’erreur standard, aux statistiques t, aux valeurs de P et qu’il y a parfois des étoiles à côté des coefficients. Ces informations ont trait à <em>l’inférence</em> statistique et nous traiterons de cela plus loin. Nos données viennent d’un échantillon, et nous voulons inférer quelque chose à la population entière. Or avant d’inférer, il faut décrire adéquatement. Donc pour l’instant, assurez-vous de bien saisir ce que les coefficients de régression veulent dire.</p>
+<p>Finalement, on pourrait vouloir créer un beau tableau de régression avec ces trois modèles qui pourrait être intégré à un document MS Word. Le package <em>texreg</em> nous permettra de le faire.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-favre2005" class="csl-entry">
+Favre, Pierre. 2005. <em>Comprendre Le Monde Pour Le Changer</em>. Paris: Presses de Sciences Po.
+</div>
+<div id="ref-tobias1993" class="csl-entry">
+Tobias, Sheila. 1993. <em>Overcoming Math Anxiety</em>. WW Norton.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Pour un livre intéressant sur cette question et nuancé sur le positivisme général, voir <span class="citation"><a href="#ref-favre2005" role="doc-biblioref">Favre</a> (<a href="#ref-favre2005" role="doc-biblioref">2005</a>)</span>.<a href="décrire.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Ceci étant, lors d’une simple équation de régression linéaire habituelle, les indices sont sous-entendus et l’on ne prend donc généralement pas la peine de les écrire. Bien indicer les équations est cependant essentiel quand les variables peuvent varier selon différents éléments. Notamment quand nous avons des données longitudinales où les variables peuvent varier à la fois <em>entre</em> les individus et «à l’intérieur» d’un même individu dans le temps. Avec des variables longitudinales, vous verrez souvent des variables qui varient <em>entre</em> les individus <em>i</em>, et à l’intérieur des individus dans le temps <em>j</em>. Cela peut par exemple donner des variables indicées par <em>ij</em> comme <span class="math inline">\({x}_{ij}\)</span>.<a href="décrire.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Les variables dichotomiques sont un cas particulier des <em>variables nominales</em>. Comme les variables dichotomiques, les variables nominales distinguent des états différents qui ne peuvent être ordonnancés hiérarchiquement, mais elles comportent plus de deux possibilités. Un exemple de variable nominale est le choix de vote : PLQ, PQ, CAQ, QS. Ce sont là quatre possibilités distinctes qui ne peuvent être ordonnancées hiérarchiquement. Lorsque l’on veut utiliser une telle variable comme variable indépendante dans une régression, on ne peut pas laisser une telle variable dans un format numérique comme PLQ=1, PQ=2, CAQ=3 et QS=4 parce qu’il n’y a alors aucun moyen de distinguer mathématiquement qu’une unité de cette variable équivaut seulement à un état différent. Il faut alors «dichotomiser» toutes les options (par exemple : PLQ = 1, autres = 0; PQ = 0, autres = 0, etc.) et laisser une catégorie de référence à partir de laquelle les autres options seront interprétées. Nous y reviendrons plus tard. Ceci étant, R peut enregistrer des variables en différents formats, notamment en format numérique et en «facteur» (fator en anglais). Une variable en facteur est une variable qui distingue différents états qui ne sont pas hiérarchisés numériquement, comme le sexe ou le choix de vote. Lorsqu’une variable est enregistrée comme facteur, R dichotomisera automatiquement cette variable lorsqu’elle sera utilisée comme variable indépendante dans un modèle. Vous remarquerez que dans les modèles, j’ai utilisé la variable <em>sexe</em> qui est enregistrée dans R comme facteur, plutôt que la variable <em>fille</em> qui est enregistrée comme étant numérique. Puisqu’il s’agit d’une variable dichotomique, cela revient mathématiquement au même, mais cela a l’avantage de faciliter la création de certains graphiques. Si la variable sexe avait eu 3 catégories (disons garçons, filles et autres), alors la variable numérique n’aurait pas été équivalente à la variable enregistrée en facteur et il aurait impérativement fallu utiliser la variable en facteur dans les modèles.<a href="décrire.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Comme nous l’avons vu plus haut, il existe aussi <em>les variables ordinales</em> qui sont ordonnancées hiérarchiquement, mais qui ne sont pas mesurées sur une unité standard. La différence entre les variables numériques et la variable ordinale n’est pas toujours claire et il faut donc faire preuve de jugement lorsque l’on procède à l’analyse statistique. Lorsque l’on détermine qu’une variable doit être traitée comme étant ordinale, elle doit être dichotomisée, comme les variables nominales. Voir la note [^3] pour plus de détails.<a href="décrire.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-générale-à-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inférer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-decrire.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

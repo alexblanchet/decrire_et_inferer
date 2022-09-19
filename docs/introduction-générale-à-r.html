@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 2 Introduction générale à R | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R</title>
+  <meta name="description" content="Chapitre 2 Introduction générale à R | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 2 Introduction générale à R | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 2 Introduction générale à R | Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="décrire.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Décrire et inférer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objectifs</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#les-logiciels"><i class="fa fa-check"></i><b>1.1</b> Les logiciels</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html"><i class="fa fa-check"></i><b>2</b> Introduction générale à R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#les-packages"><i class="fa fa-check"></i><b>2.1</b> Les packages</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#le-working-directory"><i class="fa fa-check"></i><b>2.2</b> Le «working directory»</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#quelques-manipulations-initiales-avec-r"><i class="fa fa-check"></i><b>2.3</b> Quelques manipulations initiales avec R</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#une-syntaxe-qui-roule-une-bonne-méthode-de-travail"><i class="fa fa-check"></i><b>2.4</b> Une syntaxe qui roule : une bonne méthode de travail</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#charger-des-données"><i class="fa fa-check"></i><b>2.5</b> Charger des données</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#voir-les-variables"><i class="fa fa-check"></i><b>2.6</b> Voir les variables</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-générale-à-r.html"><a href="introduction-générale-à-r.html#tableau-croisé"><i class="fa fa-check"></i><b>2.7</b> Tableau croisé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="décrire.html"><a href="décrire.html"><i class="fa fa-check"></i><b>3</b> Décrire</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="décrire.html"><a href="décrire.html#une-équation-pour-décrire-une-variable"><i class="fa fa-check"></i><b>3.1</b> Une équation pour décrire une variable</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="décrire.html"><a href="décrire.html#quest-ce-que-cette-équation"><i class="fa fa-check"></i><b>3.1.1</b> Qu’est-ce que cette équation?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="décrire.html"><a href="décrire.html#la-réponse"><i class="fa fa-check"></i><b>3.1.2</b> La réponse</a></li>
+<li class="chapter" data-level="3.1.3" data-path="décrire.html"><a href="décrire.html#une-équation-générale-décrivant-la-variable"><i class="fa fa-check"></i><b>3.1.3</b> Une équation générale décrivant la variable?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="décrire.html"><a href="décrire.html#les-types-de-variables-et-éviter-de-faire-nimporte-quoi"><i class="fa fa-check"></i><b>3.2</b> Les types de variables et éviter de faire n’importe quoi</a></li>
+<li class="chapter" data-level="3.3" data-path="décrire.html"><a href="décrire.html#décrire-une-relation-entre-des-variables"><i class="fa fa-check"></i><b>3.3</b> Décrire une relation entre des variables</a></li>
+<li class="chapter" data-level="3.4" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-dichotomique"><i class="fa fa-check"></i><b>3.4</b> La régression linéaire simple avec une variable dichotomique</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="décrire.html"><a href="décrire.html#création-des-données"><i class="fa fa-check"></i><b>3.4.1</b> Création des données</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-simple-avec-une-variable-continue"><i class="fa fa-check"></i><b>3.5</b> La régression linéaire simple avec une variable continue</a></li>
+<li class="chapter" data-level="3.6" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-avec-plusieurs-variables-indépendantes"><i class="fa fa-check"></i><b>3.6</b> La régression linéaire avec plusieurs variables indépendantes</a></li>
+<li class="chapter" data-level="3.7" data-path="décrire.html"><a href="décrire.html#la-régression-linéaire-un-exemple-avec-des-données-réelles"><i class="fa fa-check"></i><b>3.7</b> La régression linéaire, un exemple avec des données réelles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inférer.html"><a href="inférer.html"><i class="fa fa-check"></i><b>4</b> Inférer</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inférer.html"><a href="inférer.html#linférence-statistique-quelques-notions-théoriques"><i class="fa fa-check"></i><b>4.1</b> L’inférence statistique, quelques notions théoriques</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="inférer.html"><a href="inférer.html#le-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>4.1.1</b> Le théorème de la limite centrale</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="inférer.html"><a href="inférer.html#léchantillonnage"><i class="fa fa-check"></i><b>4.2</b> L’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="inférer.html"><a href="inférer.html#exemple-dune-élection-à-deux-partis-55-45"><i class="fa fa-check"></i><b>4.2.1</b> Exemple d’une élection à deux partis (55-45)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inférer.html"><a href="inférer.html#exemple-dune-élection-serrée-51-49"><i class="fa fa-check"></i><b>4.2.2</b> Exemple d’une élection serrée (51-49)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="inférer.html"><a href="inférer.html#du-sondage-à-la-population"><i class="fa fa-check"></i><b>4.3</b> Du sondage à la population</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="inférer.html"><a href="inférer.html#la-marge-derreur"><i class="fa fa-check"></i><b>4.3.1</b> La marge d’erreur</a></li>
+<li class="chapter" data-level="4.3.2" data-path="inférer.html"><a href="inférer.html#la-différence-entre-deux-groupes-le-test-t"><i class="fa fa-check"></i><b>4.3.2</b> La différence entre deux groupes : Le Test <em>t</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Décrire et inférer. Une introduction intuitive à l’analyse quantitative avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-générale-à-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapitre 2</span> Introduction générale à R<a href="introduction-générale-à-r.html#introduction-générale-à-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Le <a href="https://www.r-project.org">logiciel R</a> est gratuit et très puissant. Il est littéralement possible de faire toutes les analyses statistiques imaginables avec R, et cela est notamment dû au fait qu’il y a une très large communauté d’utilisateurs de R qui produisent des «packages» qui ajoutent des fonctions au logiciel. Le désavantage de R est que la courbe d’apprentissage est plus difficile qu’avec d’autres logiciels parce que R n’offre pas de menus déroulants. Cependant <em>après</em> avoir <a href="https://www.r-project.org">installé R</a> sur votre ordinateur, il est possible d’installer <a href="https://www.rstudio.com">R Studio</a> qui est aussi gratuit.R Studio n’est pas un logiciel qui fonctionne seul, il nécessite que la base de R soit installée sur votre ordinateur. R Studio est une interface qui va «par-dessus» R et facilite un peu son utilisation. Il faut donc préalablement avoir installé R, puis on installe R Studio. Une fois cela fait, on peut utiliser R Studio.</p>
+<p>R Studio propose par défaut quatre panels qui peuvent être positionnés à votre guise dans les préférences du logiciel. Si vous ne modifiez pas les préférences, le panel où nous écrivons la syntaxe est en haut à gauche. Sous ce panel, en bas à gauche, se trouve la «console» de R, qui renvoie les résultats des commandes que nous passons à R via notre syntaxe. En haut à droite se trouve le panel «Environnement» qui liste tous les objets chargé en mémoire dans R. En bas à droite se trouve le panel des fichiers, figures, packages (et autres) où seront affichés les figures et où nous pourront charger et installer des packages.</p>
+<div id="les-packages" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Les packages<a href="introduction-générale-à-r.html#les-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R vient par défaut avec une série de commandes très utiles, mais il existe aussi beaucoup de «packages» qui ajoutent des fonctions au logiciel. Les packages doivent être installés sur votre ordinateur (et souvent ré-installés lorsque vous mettez à jour votre version de R), mais ensuite vous n’avez pas à les installer de nouveau. Cependant, si vous désirez utiliser les fonctions d’un package, il faut systématiquement le charger dans votre session R. R fonctionne ainsi parce que si tous les packages installés sur votre ordinateurs étaient systématiquement actifs sans avoir à les charger, R deviendrait de plus en plus lourd et lent parce qu’il exigerait énormément de mémoire RAM. Donc, on <em>installe</em> d’abord un package quand on veut pouvoir utiliser ses fonctions. Cette installation ne se fait qu’une seule fois (ou lors des mises à jour), mais ensuite on doit <em>charger</em> à chaque session les packages que l’on veut utiliser.</p>
+<p>Par exemple, le package <em>ggplot2</em> est très utilie pour faire des graphiques. Si je ne l’ai jamais installé sur mon ordinateur, je peux le faire en cliquant sur l’onglet «packages» du panel en bas à droite, puis «install», puis je peux taper le nom du package (“ggplot2”) dans le menu. R Studio cherchera la package correspondant dans la banque de package accessible via internet. En cliaquant sur install, R Studio installera le package. Alternativement, on peut aussi procéder directement par la syntaxe comme suit avec la commande “install.packages(”NOM DU PACKAGE”)“, donc dans notre cas <em>install.packages(“ggplot2”)</em>.</p>
+<p>Une fois que le package est installé, il apparaîtra dans la liste «System Library» sous l’onglet «package» du panel en bas à droite. On peut simplement cliquer sur la case correspondant au package souhaité pour l’activer, ou encore mieux le faire via la syntaxe comme ceci :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-générale-à-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>Notez que vous ne pouvez pas utiliser les fonctions d’un package s’il n’est pas chargé dans votre session. Pour cette raison, si vous écrivez un script qui utilise des fonctions qui viennent de certains packages, la bonne pratique est de charger ceux-ci dans votre syntaxe elle-même avant d’utiliser les fonctions. Autrement, vous aurez un message d’erreur et votre script ne pourra pas rouler du début à la fin. Il peut donc être pratique au début d’utiliser les menus et les cases cliquables, mais <em>je vous suggère fortement</em> de copier et coller les lignes de code produites par ces actions dans votre syntaxe elle-même afin que vous contruisiez progressivement un script qui pourra ensuite être roulé du début à la fin sans erreurs. Une bonne méthode de travail et des syntaxes «propres» vous sauverons beaucoup de temps.</p>
+</div>
+<div id="le-working-directory" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Le «working directory»<a href="introduction-générale-à-r.html#le-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Comme tous les logiciels statistiques, R a en mémoire un endroit sur votre ordinateur qui est le «working directory». C’est à cet endroit que R placera par défaut tout ce que vous sauvegarderez durant votre session. Par défaut, R utilisera le dernier working directory qu’il a en méoire. Vous pouvez à tout moment changer le working directory comme ceci :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-générale-à-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setwd(&quot;/output&quot;) # setwd() pour set working directory</span></span>
+<span id="cb2-2"><a href="introduction-générale-à-r.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puis on place le lien vers le fichier souhaité dans la parenthèse. </span></span></code></pre></div>
+<p>On peut passer «par-dessus» le working directory en mémoire à un moment donné en référant au lien complet vers un fichier que l’on souhaite utiliser (ou dans lequel on souhaite sauvegarder quelque chose), mais l’avantage d’établir le working directory approprié est que R assumera alors que ce à quoi vous référez s’y trouve. Il est alors possible d’utiliser seulement le nom du fichier auquel on réfère (plutôt que le lien complet vers celui-ci). Il est donc de bonne pratique d’établir au début d’une syntaxe le working directory que vous souhaitez utiliser. Cela vous évitera d’avoir à écrire constement les liens complets vers les fichiers sur votre ordinateur.</p>
+</div>
+<div id="quelques-manipulations-initiales-avec-r" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Quelques manipulations initiales avec R<a href="introduction-générale-à-r.html#quelques-manipulations-initiales-avec-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pour vous aider à mieux saisir ce que nous ferons durant le cours et pour que vous ayez un petit guide de référence lorsque vous serez seul à votre bureau, je vais ici procéder à quelques manipulations de bases avec R. La syntaxe (ou les commandes) apparaîtront dans des blocs ombragé et le résultat produit par R apparaîtra sous ces blocs sur des lignes précédés de deux dièzes. Les annotations <em>à l’intérieur</em> de la syntaxe seront précédées d’un seul dièse. Cela est nécessaire afin que R sache qu’il s’agit d’une annotation et non pas de commandes qu’il doit exécuter.</p>
+<p>Commençons doucement en demandant à R de renvoyer le chiffre <span class="math inline">\(\pi\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-générale-à-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ceci est une autre annonation. Nous allons entrer la commande &quot;pi&quot;</span></span>
+<span id="cb3-2"><a href="introduction-générale-à-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a>pi <span class="co"># Ceci est une autre annotation que je place à côté de la commande.</span></span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>La commande «pi» est la ligne de commande et R nous renvoie le résultat sous le bloc ombragé sur la ligne précédée par deux dièses. Nous pourrions aussi demander à R de nous renvoyer toutes les couleurs qu’il a en mémoire. R contient par défaut 657 couleurs dans l’objet <em>colors()</em> qui sont utilisées notamment pour faire les graphiques. Or, puisqu’il y en a 657, nous allons simplement lui demander de nous donner seulement les premières en utilisant la commande <em>head()</em>, et en insérant <em>colors()</em> dans la parenthèse de la commande <em>head()</em> :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-générale-à-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colors</span>())</span></code></pre></div>
+<pre><code>## [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;
+## [5] &quot;antiquewhite2&quot; &quot;antiquewhite3&quot;</code></pre>
+<p>Ici, le premier élément contenu dans l’objet <em>colors()</em> est “white,” le cinquième élément est “antiquewhite2” et le sixième “antiquewhite3.” Si nous n’avions pas inséré <em>colors()</em> à l’intérieur de la commande <em>head()</em>, R nous aurait renvoyé la liste complète des 657 couleurs, ce qui aurait été interminable.</p>
+<p>Nous pouvons aussi créer des objets qui peuvent contenir tout ce que l’on veut. Nous pouvons nommer ces objets de n’importe quelle manière. Créons ici l’objet «fadeldwill» qui contiendra la valeur de 1 :</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-générale-à-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<p>Nous avons ici créé l’objet <em>fadeldwill</em> et nous lui avons assigné la valeur de 1. Le signe <code>&lt;-</code> est équivalent à =, ou peut être lu comme «insère ce qui est à droite dans l’objet à gauche de la flèche». L’objet <em>fadeldwill</em> est maintenant en mémoire, mais R ne renvoie rien parce que nous ne lui avons pas demandé. Faisons-le.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-générale-à-r.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fadeldwill</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Nous voyons que <em>fadeldwill</em> ne contient qu’un seul élément ([1]) qui est la valeur 1.</p>
+<p>Nous pourrions changer le contenu de <em>fadeldwill</em> pour “abc” au lieu de 1. Notez que je commence ici à annoter le contenu de la syntaxe en faisant précéder toute annotation d’un dièse afin que R sache qu’il ne s’agit pas de code qu’il doit exécuter. Les annotations sont très utiles pour clarifier une syntaxe et mieux s’y retrouver plus tard. Pour ceux qui sont familiers avec Stata, c’est l’équivalent de mettre une étoile (*) dans la syntaxe.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction-générale-à-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> <span class="st">&quot;abc&quot;</span> <span class="co"># Pour mettre abc dans fadeldwill. </span></span>
+<span id="cb10-2"><a href="introduction-générale-à-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Les guillements sont nécessaires puisque abc n&#39;est pas numérique.</span></span>
+<span id="cb10-3"><a href="introduction-générale-à-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="co"># Pour demander à R de nous dire ce que contient fadeldwill.</span></span></code></pre></div>
+<pre><code>## [1] &quot;abc&quot;</code></pre>
+<p>Nous pourrions vouloir que <em>fadeldwill</em> contienne plutôt une série de chiffres (disons : 1, 2, 3, 4, 5). Il faudra alors utiliser la fonction <em>c()</em>, «c» pour «concatenate», et on insère ce que l’on veut dans la parenthèse, avec des virgules entres les éléments.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-générale-à-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) </span>
+<span id="cb12-2"><a href="introduction-générale-à-r.html#cb12-2" aria-hidden="true" tabindex="-1"></a>fadeldwill</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Nous pourrions aussi vouloir mettre autre chose que des nombres dans <em>fadeldwill</em> :</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-générale-à-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>) </span>
+<span id="cb14-2"><a href="introduction-générale-à-r.html#cb14-2" aria-hidden="true" tabindex="-1"></a>fadeldwill</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<p>Jusqu’à présent, nous avons systématiquement <em>remplacé</em> le contenu de <em>fadeldwill</em> par du nouveau contenu. Nous pourrions cependant vouloir lui <em>ajouter</em> un nouvel élément à ce qu’il contient déjà. Ajoutons la lettre F à la suite de lettres que contient <em>fadeldwill</em> :</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-générale-à-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> <span class="fu">c</span>(fadeldwill, <span class="st">&quot;F&quot;</span>) <span class="co"># Ici, nous disons simplement que l&#39;objet </span></span>
+<span id="cb16-2"><a href="introduction-générale-à-r.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fadeldwill contient fadeldwill et la lettre F. Donc, ce qu&#39;était déjà </span></span>
+<span id="cb16-3"><a href="introduction-générale-à-r.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l&#39;objet fadeldwill (soit &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;) et on y ajoute F.</span></span>
+<span id="cb16-4"><a href="introduction-générale-à-r.html#cb16-4" aria-hidden="true" tabindex="-1"></a>fadeldwill </span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot;</code></pre>
+<p>Nous pourrions aussi vouloir <em>retirer</em> un élément de <em>fadeldwill</em>. Disons que nous voulions retirer C :</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-générale-à-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> fadeldwill[<span class="sc">-</span><span class="dv">3</span>] <span class="co"># Nous voulons que fadeldwill demeure identique</span></span>
+<span id="cb18-2"><a href="introduction-générale-à-r.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mais en excluant &quot;C&quot;, qui est la troisième valeur, d&#39;où le [-3].</span></span>
+<span id="cb18-3"><a href="introduction-générale-à-r.html#cb18-3" aria-hidden="true" tabindex="-1"></a>fadeldwill </span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot;</code></pre>
+<p>Nous aurions aussi pu vouloir retirer A et F :</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-générale-à-r.html#cb20-1" aria-hidden="true" tabindex="-1"></a>fadeldwill <span class="ot">&lt;-</span> fadeldwill[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)] <span class="co"># Nous retirons le premier (A) et le </span></span>
+<span id="cb20-2"><a href="introduction-générale-à-r.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cinquième élément (F, devenu cinquième après le retrait de C).</span></span>
+<span id="cb20-3"><a href="introduction-générale-à-r.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Nous devons les mettre dans un c() parce qu&#39;il y a plus d&#39;un élément</span></span>
+<span id="cb20-4"><a href="introduction-générale-à-r.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># à retirer</span></span>
+<span id="cb20-5"><a href="introduction-générale-à-r.html#cb20-5" aria-hidden="true" tabindex="-1"></a>fadeldwill </span></code></pre></div>
+<pre><code>## [1] &quot;B&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<p>Nous pourrions aussi vouloir que R nous renvoie seulement le deuxième élément contenu dans <em>fadeldwill</em> :</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduction-générale-à-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a>fadeldwill[<span class="dv">2</span>] <span class="co"># Nous demandons à R de donner le 2e élément de fadeldwill</span></span></code></pre></div>
+<pre><code>## [1] &quot;D&quot;</code></pre>
+<p>R nous renvoie bien la lettre D, qui est maintenant le deuxième élément dans notre objet.</p>
+<p>Nous pourrions aussi vouloir créer l’objet <em>fadeldwillidou</em> qui contiendrait seulement le premier et le troisième élément de fadeldwill :</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-générale-à-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou <span class="ot">&lt;-</span> fadeldwill[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
+<span id="cb24-2"><a href="introduction-générale-à-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>## [1] &quot;B&quot; &quot;E&quot;</code></pre>
+<p>Encore une fois, si on veut <em>ajouter</em> quelque chose à un objet qui existe déjà, il faut que l’objet lui-même soit inclu à droite de la flèche. Par exemple, si nous voulons ajouter A à <em>fadeldwillidou</em> qui contient déjà B, E, il faut impérativement inclure <em>fadeldwillidou</em> dans la parenthèse <em>c()</em> à droite de la flèche.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction-générale-à-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou <span class="ot">&lt;-</span> <span class="fu">c</span>(fadeldwillidou, <span class="st">&quot;A&quot;</span>)</span></code></pre></div>
+<p>Si l’on inclut pas l’objet lui-même à droite de la flèche, alors son contenu sera remplacé par ce qui est à droite de la flèche, sans préserver le contenu préalable. Par exemple, ici nous remplaçons complètement le contenu de <em>fadeldwillidou</em> (B, E, A) par les nombres de 1 à 10.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introduction-générale-à-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="introduction-générale-à-r.html#cb27-2" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>Pour le meilleur et (surtout) pour le pire, le recodage est très certainement ce qui demande souvent le plus de travail lorsque nous faisons des analyses statistiques. Souvent, les variables ne sont pas codées comme on voudrait qu’elles le soient, ou il faut «nettoyer» les données brutes de sorte à les rendre analysables. Nous verrons cela plus en profondeur un peu plus loin, mais pour l’instant, voici quelques manipulations usuelles qu’il vous sera utile de comprendre.</p>
+<p>Nous avons l’objet <em>fadeldwill</em> qui contient B, D, E. Imaginons que nous voulions remplacer E par Z. Nous pouvons le faire comme ceci.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introduction-générale-à-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>fadeldwill</span></code></pre></div>
+<pre><code>## [1] &quot;B&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introduction-générale-à-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a>fadeldwill[fadeldwill <span class="sc">==</span> <span class="st">&quot;E&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Z&quot;</span></span>
+<span id="cb31-2"><a href="introduction-générale-à-r.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplace les valeurs de fadeldwillidou qui sont égales à &quot;E&quot; </span></span>
+<span id="cb31-3"><a href="introduction-générale-à-r.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># et remplace les par &quot;Z&quot;.</span></span>
+<span id="cb31-4"><a href="introduction-générale-à-r.html#cb31-4" aria-hidden="true" tabindex="-1"></a>fadeldwill</span></code></pre></div>
+<pre><code>## [1] &quot;B&quot; &quot;D&quot; &quot;Z&quot;</code></pre>
+<p>Nous pourrions maintenant vouloir changer les valeurs de certains chiffres de <em>fadeldwillidou</em> qui contient 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Disons que nous veulons que 2 soit remplacé par 1.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introduction-générale-à-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou[fadeldwillidou <span class="sc">==</span> <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-2"><a href="introduction-générale-à-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplace les valeurs de fadeldwillidou qui sont égales à 2 </span></span>
+<span id="cb33-3"><a href="introduction-générale-à-r.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># et remplace les par 1.</span></span>
+<span id="cb33-4"><a href="introduction-générale-à-r.html#cb33-4" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>##  [1]  1  1  3  4  5  6  7  8  9 10</code></pre>
+<p>Imaginons maintenant que nous voulions que les chiffres de 3 à 7 soient remplacés par 4.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introduction-générale-à-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou[fadeldwillidou <span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> fadeldwillidou <span class="sc">&lt;=</span><span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb35-2"><a href="introduction-générale-à-r.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode les valeurs de fadeldwillidou plus grandes que 2 et inférieure</span></span>
+<span id="cb35-3"><a href="introduction-générale-à-r.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ou égale à 7 et remplace par 4.</span></span>
+<span id="cb35-4"><a href="introduction-générale-à-r.html#cb35-4" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>##  [1]  1  1  4  4  4  4  4  8  9 10</code></pre>
+<p>Nous pourrions aussi vouloir changer la valeur de 9 pour celle de 10</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="introduction-générale-à-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou[fadeldwillidou <span class="sc">&gt;</span> <span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Recode les chiffres plus grand </span></span>
+<span id="cb37-2"><a href="introduction-générale-à-r.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># que 8 pour qu&#39;ils prennent la valeur de 10. </span></span>
+<span id="cb37-3"><a href="introduction-générale-à-r.html#cb37-3" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>##  [1]  1  1  4  4  4  4  4  8 10 10</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="introduction-générale-à-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternativement, dans ce cas nous aurions aussi pu faire </span></span>
+<span id="cb39-2"><a href="introduction-générale-à-r.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fadeldwillidou[fadeldwillidou == 9] &lt;- 10</span></span></code></pre></div>
+<p>Dans la vraie vie, ces chiffres pourraient correspondre à des codes pour, par exemple, la couleur des yeux. 1 pourrait vouloir dire qu’une personne a les yeux bleus, 4 qu’elle a les yeux bruns, 8 qu’elle a les yeux pairs et 10 qu’elle a les yeux verts. Sachant cela, nous pourrions préférer avoir les labels plutôt que les chiffres. Cela pourrait être pratique plus tard.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="introduction-générale-à-r.html#cb40-1" aria-hidden="true" tabindex="-1"></a>fadeldwillidou <span class="ot">&lt;-</span> <span class="fu">factor</span>(fadeldwillidou, </span>
+<span id="cb40-2"><a href="introduction-générale-à-r.html#cb40-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Bleus&quot;</span>, <span class="st">&quot;Bruns&quot;</span>, </span>
+<span id="cb40-3"><a href="introduction-générale-à-r.html#cb40-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;Pairs&quot;</span>, <span class="st">&quot;Verts&quot;</span>))</span>
+<span id="cb40-4"><a href="introduction-générale-à-r.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="introduction-générale-à-r.html#cb40-5" aria-hidden="true" tabindex="-1"></a>fadeldwillidou</span></code></pre></div>
+<pre><code>##  [1] Bleus Bleus Bruns Bruns Bruns Bruns Bruns Pairs Verts Verts
+## Levels: Bleus Bruns Pairs Verts</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="introduction-générale-à-r.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fadeldwillidou)</span></code></pre></div>
+<pre><code>## Bleus Bruns Pairs Verts 
+##     2     5     1     2</code></pre>
+<p>Les objets <em>fadeldwill</em> et <em>fadeldwillidou</em> sont en mémoire dans notre environnement de travail (workspace). Nous pouvons voir le contenu de tous les objets qui se trouvent dans cet environnement en faisant la commande <em>objects()</em> :</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="introduction-générale-à-r.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;fadeldwill&quot;     &quot;fadeldwillidou&quot;</code></pre>
+<p>Nous voyons que notre espace de travail ne contient pour l’instant que nos deux objets. Il y a <em>fadeldwill</em> et <em>fadeldwillidou</em>. R Studio nous permet de facilement voir tout le contenu de l’espace de travail sans passer de commande R en observant simplement le panel approprié dans l’interface.</p>
+<p>L’espace de travail peut contenir une très grande quantité d’objets. Ceux-ci peuvent être des trivialités (comme c’est le cas ici), ou encore des choses plus importantes comme des bases de données (des matrices). Contrairement aux autres logiciels statistiques, il est donc très facile d’utiliser en même temps plusieurs bases de données avec R, ce qui est parfois très pratique et impossible (ou souvent fastidieux) avec les autres logiciels.</p>
+<p>Ceci étant, puisque les objets <em>fadeldwill</em> et <em>fadeldwillidou</em> nous seront complètement inutiles, il vaut aussi bien les effacer :</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="introduction-générale-à-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(fadeldwill, fadeldwillidou) <span class="co"># rm() pour &quot;remove&quot;. Nous n&#39;avons pas besoin</span></span>
+<span id="cb46-2"><a href="introduction-générale-à-r.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># de mettre fadeldwill et fadeldwillidou à l&#39;intérieur d&#39;un c() parce que</span></span>
+<span id="cb46-3"><a href="introduction-générale-à-r.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># la commande rm() implique forcément une liste d&#39;un ou plusieurs éléments</span></span>
+<span id="cb46-4"><a href="introduction-générale-à-r.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># et rien d&#39;autre. Alternativement, nous pourrions faire rm(list = ls())</span></span>
+<span id="cb46-5"><a href="introduction-générale-à-r.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pour vider complètement l&#39;espace de travail.</span></span>
+<span id="cb46-6"><a href="introduction-générale-à-r.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="introduction-générale-à-r.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>() <span class="co"># objects() est maintenant vide.</span></span></code></pre></div>
+<pre><code>## character(0)</code></pre>
+</div>
+<div id="une-syntaxe-qui-roule-une-bonne-méthode-de-travail" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Une syntaxe qui roule : une bonne méthode de travail<a href="introduction-générale-à-r.html#une-syntaxe-qui-roule-une-bonne-méthode-de-travail" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il est possible d’écrire directement des commandes dans la console de R et dans certains cas cela peut être utile, mais il est beaucoup mieux d’écrire vos commandes dans un script qui pourra ensuite être réutilisé. Par ailleurs, un bon script doit pouvoir être roulé du début à la fin sans erreur. Des erreurs dans un script surviendront, par exemple, si à un moment donné dans la série de commandes on fait référence à un objet qui n’a pas préalablement été créé dans le script lui-même.</p>
+<p>Imaginons que j’utilise la console pour créer l’objet x qui contiendra la lettre A. J’écrirais donc la commande suivante directement dans la console plutôt que dans un script :</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-générale-à-r.html#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span></span></code></pre></div>
+<p>Je viens de créer l’objet <em>x</em>, il existe en ce moment dans ma session, mais je ne l’ai pas fait en écrivant la commande dans un scrip. Ensuite, dans un fichier de synataxe, je modifie l’objet <em>x</em> pour inclure aussi “B.” J’écris donc la commande suivante dans un fichier de syntaxe:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-générale-à-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<p>Remarquez cependant que notre objet <em>x</em> a d’abord été créé directement dans la console et contenait la lettre A, puis nous l’avons modifié par une commande écrite dans notre script de sorte à ce qu’il inclut aussi la lettre B.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="introduction-générale-à-r.html#cb50-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
+<p>Notre objet <em>x</em> contient donc maintenant les lettres A et B.</p>
+<p>Imaginons maitenant que je sauvegarde mon script qui contenait seulement la commande «x &lt;- c(x, “B”)» et que je ferme ma session R. Je vais ici simuler la fermeture de la session en vidant le contenu de l’espace de travail.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-générale-à-r.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Maintenant, imagions que je retourne à mon script deux semaines plus tard et que je veuille le rouler. Mon script contiendrait alors uniquement ceci:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-générale-à-r.html#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;x&#39; not found</code></pre>
+<p>Nous avons un message d’erreur parce que notre script tente de modifier l’objet <em>x</em> qui n’est pas préalablement créé dans notre session. Donc, ma syntaxe ne peut pas être «roulée», elle n’est pas «propre» parce qu’elle génère un message d’erreur. Ce message est causé par le fait que mon script fait référence à un objet qui n’est pas créé dans le script lui-même au moment où on fait référence à l’objet. Plutôt que de créer l’objet <em>x</em> via une commande dans la console, il aurait donc mieux valu le faire dans un script complet comme ceci:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-générale-à-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span> <span class="co"># Créé l&#39;obet x qui contient A</span></span>
+<span id="cb55-2"><a href="introduction-générale-à-r.html#cb55-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="st">&quot;B&quot;</span>) <span class="co"># Modifie l&#39;objet x pour lui ajouter B</span></span></code></pre></div>
+<p>Notez aussi que l’odre des commandes est important. Je ne pourrais pas modifier l’objet <em>x</em> sans d’abord l’avoir créé dans la syntaxe. Simulons encore une fois que nous fermons notre session en vidant notre espace de travail (qui contient actuellement <em>x</em>).</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-générale-à-r.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Imaginons maintenant que ma syntaxe soit écrite en sens inverse:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introduction-générale-à-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="st">&quot;B&quot;</span>) <span class="co"># Modifie l&#39;objet x pour lui ajouter B</span></span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;x&#39; not found</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-générale-à-r.html#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span> <span class="co"># Créé l&#39;obet x qui contient A</span></span></code></pre></div>
+<p>Nous avons un message d’erreur parce que la première ligne de la syntaxe tente de modifier l’objet <em>x</em> qui n’a pas encore été créé dans cette syntaxe. L’ordre des commandes est donc important.</p>
+<p>Donc, ce qui est nécessaire à ce qu’un script roule bien doit être écrit dans le script lui-même. <em>N’écrivez des commandes directement dans la console que pour des choses temporaires qui ne sont pas nécessaires à ce que votre syntaxe puisse être roulée complètement</em>. L’installation (mais pas le chargement) des packages est un exemple de choses qui peut être écrit directement dans la console. Écrire les commandes d’installations des packages directement dans la console évitera aussi de surcharger votre script inutilement. On peut écrire ces commandes directement dans la console parce que l’installation des packages ne se fait normalement qu’une seule fois (sauf pour les mise à jour). Une fois qu’un package a été installé, il n’est pas nécessaire de le réinstaller à chaque session. Cependant, si votre script utilise des fonctions issues de packages, il faut impérativement <em>charger</em> ces packages dans votre script <em>avant</em> d’utiliser ces commandes pour qu’elles puissent être roulées.</p>
+</div>
+<div id="charger-des-données" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Charger des données<a href="introduction-générale-à-r.html#charger-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Plus loin, nous créerons nous-mêmes des données fictives à des fins d’illustration, mais dans la très vaste majorité des cas vous voudrez charger de véritables données. R peut lire des données dans n’importe quel format, qu’elles aient été initialement sauvegardées en format SPSS, Stata (il y a maintenant plusieurs formats Stata depuis la version 13), SAS, csv, et autres. Il suffit d’utiliser la bonne fonction d’importation suivant le format des données que nous voulons charger.</p>
+<p>Nous utiliserons ici des données des éltudes électorales canadiennes. Nous téléchargeons d’abord le <a href="https://ces-eec.sites.olt.ubc.ca/files/2016/07/CES2015-phone-release.zip">fichier de données</a> que nous voulons. Les données sont maintenant sur notre ordinateur, nous devons maintenant charger les données dans R. Vous pouvez facilement trouver <a href="https://www.r-bloggers.com/this-r-data-import-tutorial-is-everything-you-need/">comment importer des données de différents formats</a>.</p>
+<p>R-Studio inclut maintenant un importateur de données via le menu contextuel placé dans la fenêtre environement. On peut donc utiliser ce menu pour charger les données plus facilement. L’avantage est aussi que ce menu nous indique le code nécessaire pour effectuer le chargement que l’on souhaite faire, et on peut ensuite réutiliser ce code pour charger les données sans avoir à repasser par les menus. Cela est très important quand on veut avoir une syntaxe «propre» qui peut être roulée du début à la fin sans erreur. Donc, si vous écrivez une syntaxe qui fera appel à des données, vous pouvez évidemment charger ces données avec le menu contextuel, mais prenez quelques secondes pour copier-coller le code nécessaire au chargement des données dans votre syntaxe. Elle pourra alors être «roulée» correctement.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-générale-à-r.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls())</span></span>
+<span id="cb60-2"><a href="introduction-générale-à-r.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb60-3"><a href="introduction-générale-à-r.html#cb60-3" aria-hidden="true" tabindex="-1"></a>ces15 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">&quot;data/CES2015_CPS-PES-MBS_complete-v2.sav&quot;</span>)</span></code></pre></div>
+</div>
+<div id="voir-les-variables" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Voir les variables<a href="introduction-générale-à-r.html#voir-les-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lorsqu’une base de données est chargée, nous voudrons évidemment y référer, et référer aux variables qu’elle contient. La base de données est en elle-même un objet, qui contient des variables. Puisque nous pouvons avoir plusieurs objets dans notre session R, il faut d’abord spécifier à quel objet nous référons avant de spécifier la variable dans cet objet. Cela ce fait avec le signe de $. Par exemple, si nous voulons faire un tableau rapide de la variable <em>RGENDER</em> (qui est le sexe des répondants) dans les données que nous venons de charger, on s’y prendrait comme suit:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-générale-à-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>RGENDER)</span></code></pre></div>
+<pre><code>## 
+##    1    5 
+## 1930 2272</code></pre>
+<p>Nous voyons donc que nous avons 1930 répondants qui sont codés 1 (les hommes), et 2272 qui sont codés 5 (les femmes). Pour savoir à quoi réfèrent ces codes numériques, il faut consulter la documentation qui accompagne les données. Dans certains cas, les variables seront directement encodées avec des labels clairs, mais ce n’est pas systématiquement le cas.</p>
+<p>Si nous voulons remplacer ces codes numériques par quelque chose de plus signifiant, on peut le faire ainsi :</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introduction-générale-à-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>sexe <span class="ot">&lt;-</span> <span class="fu">factor</span>(ces15<span class="sc">$</span>RGENDER, </span>
+<span id="cb63-2"><a href="introduction-générale-à-r.html#cb63-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>, <span class="st">&quot;Femme&quot;</span>))</span>
+<span id="cb63-3"><a href="introduction-générale-à-r.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Notez ici que plutôt que de modifier la variable originale RGENDER</span></span>
+<span id="cb63-4"><a href="introduction-générale-à-r.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># j&#39;ai plutôt créé une nouvelle variable &quot;sexe&quot; dans l&#39;objet ces15.</span></span>
+<span id="cb63-5"><a href="introduction-générale-à-r.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Cette variable équivaut à la variable RGENDER, mais avec les labels</span></span>
+<span id="cb63-6"><a href="introduction-générale-à-r.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># à la place des chiffres. SI j&#39;avais écrit &quot;ces15$RGENDER&quot; à gauche</span></span>
+<span id="cb63-7"><a href="introduction-générale-à-r.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># de la flèche plutôt que &quot;ces15$sexe&quot;, alors j&#39;aurais modifié la variable</span></span>
+<span id="cb63-8"><a href="introduction-générale-à-r.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># originale.</span></span>
+<span id="cb63-9"><a href="introduction-générale-à-r.html#cb63-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-10"><a href="introduction-générale-à-r.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>sexe)</span></code></pre></div>
+<pre><code>## 
+## Homme Femme 
+##  1930  2272</code></pre>
+<p>Nous pourrions aussi faire un graphique pour visualiser la variable.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="introduction-générale-à-r.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ces15<span class="sc">$</span>sexe) <span class="co"># En utilisant la fonction plot(), R choisi ce qui est</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="introduction-générale-à-r.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># le plus approprié pour le type de variable.</span></span></code></pre></div>
+<p>Nous pourrions aussi enregistrer cette figure quelque part sur notre ordinateur.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introduction-générale-à-r.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&#39;hist.jpg&#39;</span>) <span class="co"># créé un fichier jpeg (ce pourrait être un autre type)</span></span>
+<span id="cb67-2"><a href="introduction-générale-à-r.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># qui sera prêt à recevoir du contenu que nous ferons à la prochaine ligne.</span></span>
+<span id="cb67-3"><a href="introduction-générale-à-r.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="introduction-générale-à-r.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ces15<span class="sc">$</span>sexe) <span class="co"># fait l&#39;histogramme</span></span>
+<span id="cb67-5"><a href="introduction-générale-à-r.html#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="introduction-générale-à-r.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() <span class="co"># referme la création de figure temprairement ouverte par </span></span></code></pre></div>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introduction-générale-à-r.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># la première commande.</span></span></code></pre></div>
+<p>Nous aurons alors le fichier «hist.jpg» qui sera sauvegardé là où a été établi notre «working directory». Si nous avions voulu enregistrer ce fichier ailleurs, il aurait simplement fallu écrire le chemin complet vers cet endroit. Par exemple, pour sauvegarder la figure sur notre bureau, on aurait fait ceci:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="introduction-générale-à-r.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;/Users/alexandreblanchet/Desktop/hist.jpg&quot;</span>) <span class="co"># sauvegarde sur le bureau</span></span>
+<span id="cb70-2"><a href="introduction-générale-à-r.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># au lieu du working directory</span></span>
+<span id="cb70-3"><a href="introduction-générale-à-r.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ces15<span class="sc">$</span>sexe,</span>
+<span id="cb70-4"><a href="introduction-générale-à-r.html#cb70-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;La figure de l&#39;année!&quot;</span>, <span class="co"># spécifier un titre à la figure</span></span>
+<span id="cb70-5"><a href="introduction-générale-à-r.html#cb70-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Fréquence&quot;</span>)  <span class="co"># Spécifier un label pour l&#39;axe Y</span></span>
+<span id="cb70-6"><a href="introduction-générale-à-r.html#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="introduction-générale-à-r.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># J&#39;en profite pour mettre un titre et un label à l&#39;axe Y.</span></span>
+<span id="cb70-8"><a href="introduction-générale-à-r.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Notez l&#39;ajouts de virgules, qui annoncent qu&#39;il y aura autre</span></span>
+<span id="cb70-9"><a href="introduction-générale-à-r.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co"># chose. Notez aussi que la parenthèse ouverte à plot( se referme après </span></span>
+<span id="cb70-10"><a href="introduction-générale-à-r.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="co"># avoir spécifié les options ajoutées.</span></span>
+<span id="cb70-11"><a href="introduction-générale-à-r.html#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
+<p>Évidemment, le lien est valable pour le bureau de mon ordinateur à moi et il faudrait modifier le lien pour qu’il correspondent au vôtre.</p>
+</div>
+<div id="tableau-croisé" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Tableau croisé<a href="introduction-générale-à-r.html#tableau-croisé" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nous voulons souvent faire des tableaux croisés poru voir comment deux variables sont liées. Imaginons que nous voulions voir dans quelle langue les hommes et les femmes ont répondu au sondage.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="introduction-générale-à-r.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>CPS15_INTLANG)</span></code></pre></div>
+<pre><code>## 
+##    1    5 
+## 3472  730</code></pre>
+<p>Nous avons 3472 personnes qui sont codées 1 (anglais) et 730 personnes qui sont codées 5 (français). Nous pouvons modifier ces codes par les labels.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="introduction-générale-à-r.html#cb74-1" aria-hidden="true" tabindex="-1"></a>ces15<span class="sc">$</span>langue_int <span class="ot">&lt;-</span> <span class="fu">factor</span>(ces15<span class="sc">$</span>CPS15_INTLANG, </span>
+<span id="cb74-2"><a href="introduction-générale-à-r.html#cb74-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Anglais&quot;</span>, <span class="st">&quot;Français&quot;</span>))</span>
+<span id="cb74-3"><a href="introduction-générale-à-r.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Notez qu&#39;encore une fois j&#39;ai créé une nouvelle variable &quot;langue_int&quot; </span></span>
+<span id="cb74-4"><a href="introduction-générale-à-r.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plutôt que de modifier la variable originale CPS15_INTLANG. </span></span>
+<span id="cb74-5"><a href="introduction-générale-à-r.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>langue_int)</span></code></pre></div>
+<pre><code>## 
+##  Anglais Français 
+##     3472      730</code></pre>
+<p>Puis nous pouvons faire le tableau croisé avec la variable de sexe:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="introduction-générale-à-r.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ces15<span class="sc">$</span>langue_int, ces15<span class="sc">$</span>sexe)</span></code></pre></div>
+<pre><code>##           
+##            Homme Femme
+##   Anglais   1592  1880
+##   Français   338   392</code></pre>
+<p>Nous obtenons ici les fréquences pour chaque caractéristiques croisées. Nous pourrions cependant vouloir les pourcentages.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="introduction-générale-à-r.html#cb78-1" aria-hidden="true" tabindex="-1"></a>tableau_sexelangue <span class="ot">&lt;-</span> <span class="fu">table</span>(ces15<span class="sc">$</span>langue_int, ces15<span class="sc">$</span>sexe) <span class="co"># Nous plaçons </span></span>
+<span id="cb78-2"><a href="introduction-générale-à-r.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co"># d&#39;abord le tableau croisé prédédent dans l&#39;objet tableau_sexelangue, </span></span>
+<span id="cb78-3"><a href="introduction-générale-à-r.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># puis nous pourrons utiliser cet objet pour demander à R de compiler</span></span>
+<span id="cb78-4"><a href="introduction-générale-à-r.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># les pourcentage via la commande prop.table()</span></span>
+<span id="cb78-5"><a href="introduction-générale-à-r.html#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-6"><a href="introduction-générale-à-r.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tableau_sexelangue, <span class="dv">1</span>) <span class="co"># Proportions en rangées</span></span></code></pre></div>
+<pre><code>##           
+##                Homme     Femme
+##   Anglais  0.4585253 0.5414747
+##   Français 0.4630137 0.5369863</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="introduction-générale-à-r.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tableau_sexelangue, <span class="dv">2</span>) <span class="co"># Proportions en colones</span></span></code></pre></div>
+<pre><code>##           
+##                Homme     Femme
+##   Anglais  0.8248705 0.8274648
+##   Français 0.1751295 0.1725352</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="introduction-générale-à-r.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si nous voulions avoir les proportions sur 100 (pourcentages)</span></span>
+<span id="cb82-2"><a href="introduction-générale-à-r.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plutôt que sur 1, nous pourrions simplement ajouter &quot;*100&quot;.</span></span>
+<span id="cb82-3"><a href="introduction-générale-à-r.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tableau_sexelangue, <span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span> <span class="co"># Pourcentages en rangées</span></span></code></pre></div>
+<pre><code>##           
+##               Homme    Femme
+##   Anglais  45.85253 54.14747
+##   Français 46.30137 53.69863</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="introduction-générale-à-r.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tableau_sexelangue, <span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span> <span class="co"># Pourcentages en colones</span></span></code></pre></div>
+<pre><code>##           
+##               Homme    Femme
+##   Anglais  82.48705 82.74648
+##   Français 17.51295 17.25352</code></pre>
+<p>Nous pourrions continuer à voir séparément différentes fonctions de R, mais cela deviendrait vite interminable. Vous devriez maintenant avoir les bases pour saisir la logique de la syntaxe de R et pour avoir une idée générale de ce qu’est une syntaxe. C’est ce qui est important. Il est impossible de couvrir le fonctionnement de R sans aussi apprendre à faire des statistiques. Si vous décidez d’apprendre R, vous devrez de toute manière apprendre par essai-erreur et cela viendra avec la pratique. Google sera votre plus grand ami!</p>
+<p>Tournons-nous maintenant sur l’objectif principal de toute analyse statistique : décrire.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="décrire.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
